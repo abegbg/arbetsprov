@@ -1,0 +1,15 @@
+<h1><%= @products.size %> Products</h1>
+
+
+
+<ul>
+	<% @products.each do |product| %>
+		<li>
+			<strong><%= product.name %></strong>
+			<%= product.description %>
+			<%= number_to_currency(product.price, :locale => :sv) %>
+			<%= product.stock %> st i lager
+		</li>
+	<% end %>
+</ul>
+
