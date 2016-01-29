@@ -5,9 +5,7 @@
 <% @products.each do |product| %>
 	<article>
 		<header>
-			<% if product.image != nil %>
-				<%= image_tag "products/thumbs/" + product.image %>
-			<% end %>
+			<%= image_for_thumb(product)  %>
 			<h2><%= link_to product.name, product %></h2>
 		</header>
 		<p>

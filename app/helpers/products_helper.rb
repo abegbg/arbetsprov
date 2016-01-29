@@ -10,4 +10,22 @@ module ProductsHelper
 		end
 	end
 
+	def image_for_thumb(product)
+		if product.image.blank?
+			image_tag "products/thumbs/placeholder.png"
+		else
+			image_tag "products/thumbs/" + product.image
+		end
+	end
+
+	def image_for_full(product)
+		if product.image.blank?
+			image_tag "products/fullsize/placeholder.png"
+		else
+			image_tag "products/fullsize/" + product.image
+		end
+	end
+
+
+
 end
