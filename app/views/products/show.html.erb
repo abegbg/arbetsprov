@@ -1,0 +1,24 @@
+<h1><%= @product.name %></h1>
+	<article>
+		<header>
+			<h2><%= @product.name %></h2>
+		</header>
+		<p>
+			<%= @product.description %>
+		</p>
+		<p>
+			<%= number_to_currency(@product.price, :locale => :sv) %>
+		</p>
+		<%= format_stock(@product) %> 
+		<p>
+			Bild: <%= @product.image %>
+		</p>
+
+		Knapp för att lägga till produkt till varukorgen.
+		<br />
+		Kanske kunna välja antal. BAPP
+
+	</article>
+
+
+<%= link_to "Alla produkter", products_path %>
