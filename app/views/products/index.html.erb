@@ -10,9 +10,7 @@
 		<p>
 			<%= number_to_currency(product.price, :locale => :sv) %>
 		</p>
-		<p>
-			<%= product.stock %> st i lager
-		</p>
+		<%= format_stock(product) %> 
 		<p>
 			Bild: <%= product.image %>
 		</p>
