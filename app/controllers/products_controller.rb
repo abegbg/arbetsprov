@@ -29,6 +29,16 @@ class ProductsController < ApplicationController
 		redirect_to @product
 	end
 
+	def destroy
+		#Man borde inte kunna ta bort en produkt om den finns i en order.
+		#Borde ha en flagga som inte visar produkten i stället.
+		@product = Product.find(params[:id])
+		@product.destroy
+		redirect_to products_url
+
+	end
+
+
 private
 
 	def product_params
