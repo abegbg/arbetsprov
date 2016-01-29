@@ -1,15 +1,26 @@
 <h1><%= @products.size %> Products</h1>
-
-
-
-<ul>
-	<% @products.each do |product| %>
-		<li>
-			<strong><%= product.name %></strong>
+<% @products.each do |product| %>
+	<article>
+		<header>
+			<h2><%= product.name %></h2>
+		</header>
+		<p>
 			<%= product.description %>
+		</p>
+		<p>
 			<%= number_to_currency(product.price, :locale => :sv) %>
+		</p>
+		<p>
 			<%= product.stock %> st i lager
-		</li>
-	<% end %>
-</ul>
+		</p>
+		<p>
+			Bild: <%= product.image %>
+		</p>
+
+		Knapp för att lägga till produkt till varukorgen.
+		<br />
+		Kanske kunna välja antal. BAPP
+
+	</article>
+<% end %>
 
