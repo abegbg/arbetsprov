@@ -1,4 +1,7 @@
 <h1><%= @products.size %> Products</h1>
+
+<%= link_to "Skapa ny produkt", new_product_path %>
+
 <% @products.each do |product| %>
 	<article>
 		<header>

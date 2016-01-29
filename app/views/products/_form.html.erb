@@ -1,0 +1,25 @@
+<%= form_for(@product) do |f| %>
+	<p>
+		<%= f.label :name, "Namn" %> <br />
+		<%= f.text_field :name, autofocus: true %>
+	</p>
+	<p>
+		<%= f.label :description, "Beskrivning" %> <br />
+		<%= f.text_area :description %>
+	</p>
+	<p>
+		<%= f.label :price, "Pris" %> <br />
+		<%= f.text_field :price %>
+	</p>
+	<p>
+		<%= f.label :stock, "Lagersaldo" %> <br />
+		<%= f.text_field :stock %>
+	</p>
+	<p>
+		<%= f.label :image, "Bild" %> <br />
+		<%= f.text_field :image %>
+	</p>
+
+	<%= f.submit %> | <%= link_to "Cancel", products_path%>
+
+<% end %>
