@@ -22,8 +22,6 @@
 	</article>
 
 
-<%= link_to "Alla produkter", products_path %>
-<br />
 <%= link_to "Uppdatera produkt", edit_product_path(@product) %>
 <br />
 <%= link_to "Tag bort produkt", product_path(@product), method: :delete, data: {confirm: 'Är du säker?'} %>
