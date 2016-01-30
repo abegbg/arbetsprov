@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+
 	root "products#index"
 
 	resources :products
+  resources :orders
 
 
   # get "products" => "products#index"

@@ -1,0 +1,51 @@
+<h1>Ordrar</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Namn</th>
+      <th>Adress</th>
+      <th>CO</th>
+      <th>Postnummer</th>
+      <th>Stad</th>
+      <th>Land</th>
+      <th>L adress</th>
+      <th>L CO</th>
+      <th>L Stad</th>
+      <th>L postnummer</th>
+      <th>L Land</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.name %></td>
+        <td><%= order.adress %></td>
+        <td><%= order.co %></td>
+        <td><%= order.zipcode %></td>
+        <td><%= order.city %></td>
+        <td><%= order.country %></td>
+        <td><%= order.d_adress %></td>
+        <td><%= order.d_co %></td>
+        <td><%= order.d_city %></td>
+        <td><%= order.d_zipcode %></td>
+        <td><%= order.d_country %></td>
+        <td><%= order.email %></td>
+        <td><%= order.mobile %></td>
+        <td><%= order.status %></td>
+        <td><%= link_to 'Visa order', order %></td>
+        <td><%= link_to 'Uppdatera order', edit_order_path(order) %></td>
+        <td><%= link_to 'Tag bort order', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
