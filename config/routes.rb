@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 	root "products#index"
 
 	resources :products
-  resources :orders
-  resources :orderrows
+  resources :orders do 
+	  resources :orderrows ##Denna vill jag ju förmodligen nästla.
 
 
   # get "products" => "products#index"
