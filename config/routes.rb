@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
 	resources :products
   resources :orders do 
-	  resources :orderrows ##Denna vill jag ju förmodligen nästla.
+	  resources :orderrows 
+	end
+
+	  ##Denna vill jag ju förmodligen nästla.
 
 
   # get "products" => "products#index"
