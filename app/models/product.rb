@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 
+
+
 	def stock_low?
 		stock < 10
 	end	
