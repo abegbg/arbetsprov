@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 		if @product.update(product_params)
-			redirect_to @product
+			redirect_to @product, notice: "Produkten är uppdaterad"
 		else
 			render :edit
 		end
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 	def create
 		@product = Product.new(product_params)
 		if @product.save
-			redirect_to @product
+			redirect_to @product, notice: "Produkten skapad"
 		else
 			render :new
 		end

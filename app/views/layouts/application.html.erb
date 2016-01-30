@@ -10,6 +10,12 @@
 
 <%= render 'layouts/header' %>
 
+<% if flash[:notice] %>
+	<p class="flash notice">
+		<%= flash[:notice] %>
+	</p>
+<% end %>
+
 <%= render 'layouts/menu' %>
 
 <%= yield %>
