@@ -1,4 +1,5 @@
 <%= form_for(@product) do |f| %>
+	<%= render 'shared/errors' %>
 	<p>
 		<%= f.label :name, "Namn" %> <br />
 		<%= f.text_field :name, autofocus: true %>
