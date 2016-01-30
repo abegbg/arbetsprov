@@ -70,4 +70,7 @@
   <%= @order.status %>
 </p>
 
+<h2>Orderrader på denna order</h2>
+<%= render 'orderrows/rows_in_order' %>
+
 <%= link_to 'Uppdatera order', edit_order_path(@order) %>

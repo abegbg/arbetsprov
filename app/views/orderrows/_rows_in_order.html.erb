@@ -1,0 +1,7 @@
+<ol>
+<% @orderrows.each do |o| %>
+	<li>
+		<%= o.id %> - <%= o.order.name %> - <%= o.product.name %> - <%= o.quantity %> st.
+	</li>
+<% end %>
+</ol>
