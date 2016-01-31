@@ -1,4 +1,18 @@
-<%= form_for(@product) do |f| %>
+
+
+
+<%= form_for(@product, remote: true, format: :json, html: {class: :product_form}) do |f| %>
+
+  <div id="error_explanation" style='display:none;'>
+    <ul>
+      <% if @product.errors.any? %>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
 	<%= render 'shared/errors' %>
 	<p>
 		<%= f.label :name, "Namn" %> <br />

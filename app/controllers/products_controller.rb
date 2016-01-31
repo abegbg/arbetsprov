@@ -15,10 +15,17 @@ class ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 		if @product.update(product_params)
-			redirect_to @product, notice: "Produkten är uppdaterad"
+			format.html { redirect_to @product, notice: 'Produkten är uppdaterad.' }
+		  format.json { render json: @thing }
 		else
-			render :edit
+			format.html { render action: 'edit' }
+			format.json { render json: @product.errors.full_messages, status: :unprocessable_entity }
 		end
+
+		# 	redirect_to @product, notice: "Produkten är uppdaterad"
+		# else
+		# 	render :edit
+		# end
 	end
 
 	def new
@@ -27,12 +34,27 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
-		if @product.save
-			redirect_to @product, notice:
-			 "Produkten skapad"
-		else
-			render :new
-		end
+
+		respond_to do |format|
+		    if @product.save
+		      format.html { redirect_to @product, notice: 'Produkten skapad.' }
+		      # format.js   {}
+#		      format.json { render json: @product, status: :created, location: @product }
+ 		      format.json { render json: @product }
+		    else
+		      format.html { render action: "new" }
+		      format.json { render json: @product.errors.full_messages, status: :unprocessable_entity }
+		    end
+		  end
+
+		# if @product.save
+		# 	redirect_to @product, notice:
+		# 	 "Produkten skapad"
+		# else
+		# 	render :new
+		# end
+
+
 	end
 
 	def destroy
