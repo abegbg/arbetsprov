@@ -1,0 +1,2 @@
+class CartrowsController < ApplicationController
+end
