@@ -1,4 +1,5 @@
 class CartrowsController < ApplicationController
+	include CartrowsHelper
 	before_action :set_product, only: [:new, :create]
 
 	def index
@@ -15,15 +16,7 @@ class CartrowsController < ApplicationController
 	end
 
 	def create
-		if cookies[:cart] 
-			cart_id = cookies[:cart]
-			@cart = Cart.find_by id: cart_id
-		else
-			@cart = Cart.new
-			@cart.save
-
-			cookies[:cart] = @cart.id
-		end
+		get_cart_from_cookie
 
 		@cartrow = @product.cartrows.new(cartrow_params)
 		@cartrow.cart = @cart

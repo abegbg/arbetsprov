@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+	include CartrowsHelper
 
 	def index
 		@products = Product.all
@@ -8,16 +9,7 @@ class ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
 		@cartrow = Cartrow.new
-		#Har jag ingen cart vill jag skapa en, annars läsa in den.
-		if cookies[:cart] 
-			@cart_id = cookies[:cart]
-			@cart = Cart.find_by id: @cart_id
-		else
-			@cart = Cart.new
-			@cart.save
-			cookies[:cart] = @cart.id
-			@cart_id = cookies[:cart]
-		end
+		get_cart_from_cookie
 	end
 
 
