@@ -1,24 +1,49 @@
-	<article class="product_show">
-		<header>
-			<%= image_for_full(@product)  %>
-			<h1><%= @product.name %></h1>
-		</header>
-		<p>
-			<%= @product.description %>
-		</p>
-		<p>
-			<%= number_to_currency(@product.price, :locale => :sv) %>
-		</p>
-		<%= format_stock(@product) %> 
-		<p>
-			Bild: <%= @product.image %>
-		</p>
+<article class="product_show">
+	<header>
+		<%= image_for_full(@product)  %>
+		<h1><%= @product.name %></h1>
+	</header>
+	<p>
+		<%= @product.description %>
+	</p>
+	<p>
+		<%= number_to_currency(@product.price, :locale => :sv) %>
+	</p>
+	<%= format_stock(@product) %> 
+	<p>
+		Bild: <%= @product.image %>
+	</p>
 
-		Knapp för att lägga till produkt till varukorgen.
-		<br />
-		Kanske kunna välja antal. BAPP
 
-	</article>
+	<p>BAPP: Här skall class ändras eller skapas.</p>
+	<p>
+		Cart: <%= @cart %>
+	</p>
+	<!--< %= form_for @cartrow, remote: true, format: :json, html: {class: :cart_form} do |f| %>-->
+	<%= form_for ([@product, @cartrow]) do |f| %>
+		<p>
+			<%= f.label :quantity, "Antal" %> <br />
+			<%= f.text_field :quantity, autofocus: true %>
+		</p>
+		<%= f.submit "Lägg i varukorgen" %>
+	<% end %>
+
+	<br />
+	Skall ha AJAX sedan.
+	<br />
+
+	Knapp för att lägga till produkt till varukorgen.
+	<br />
+	Kanske kunna välja antal. BAPP
+
+</article>
+
+<div id="cartrows">
+	<ol id="row">
+
+	</ol>
+
+</div>
 
 
 <%= link_to "Uppdatera produkt", edit_product_path(@product) %>

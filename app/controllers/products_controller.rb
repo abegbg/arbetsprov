@@ -4,19 +4,36 @@ class ProductsController < ApplicationController
 		@products = Product.all
 	end
 
+
 	def show
 		@product = Product.find(params[:id])
+	
+		#Skapa jag skapa en egen för cartrow och köra en render på den?
+#		@cartrow = @product.cartrows.new
+		@cartrow = Cartrow.new
+
+		#Har jag ingen cart vill jag skapa en, annars läsa in den.
+		if cookies[:cart] 
+			cart_id = cookies[:cart]
+			@cart = Cart.find_by id: cart_id
+		else
+			@cart = Cart.new
+			@cart.save
+			cookies[:cart] = @cart.id
+		end
 	end
+
 
 	def edit
 		@product = Product.find(params[:id])
 	end
 
+
 	def update
 		@product = Product.find(params[:id])
 		if @product.update(product_params)
 			format.html { redirect_to @product, notice: 'Produkten är uppdaterad.' }
-		  format.json { render json: @thing }
+		  format.json { render json: @product }
 		else
 			format.html { render action: 'edit' }
 			format.json { render json: @product.errors.full_messages, status: :unprocessable_entity }

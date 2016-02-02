@@ -1,0 +1,15 @@
+<h1>Cart Rows Index</h1>
+
+Cartid: <%= @cart_id %>
+Cart: <%= @cart %>
+Cartrows: <%= @cartrows %>
+
+
+
+<% @cartrows.each do |cartrow| %>
+	<p><%= cartrow.product.name %></p>
+	<p><%= cartrow.cart_id %></p>
+	<hr />
+<% end %>
+
+<%= link_to "Töm varukorgen" %>
