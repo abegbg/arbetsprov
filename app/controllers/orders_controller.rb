@@ -25,6 +25,8 @@ class OrdersController < ApplicationController
   end
 
   def create
+    #Check so that number of products in the cart is available. Should be done in the model.
+
     @order = Order.new(order_params)
 
     #Spara ner Cartrows till Orderrows.
@@ -33,13 +35,23 @@ class OrdersController < ApplicationController
     cart_to_orderrows(@cartrows, @order)
 
     respond_to do |format|
-      if @order.save
-        empty_cart
-        format.html { redirect_to @order, notice: 'Order skapad.' }
+      if valid_order?(@order)
+        if @order.save
+          #Lower quantity on product here? 
+          #lower_product_quantity(@order) ##Should this be part of the model and not in the controller?
+          empty_cart
+
+          format.html { redirect_to @order, notice: 'Order skapad.' }
+        else
+          format.html { render :new }
+        end
       else
+        #Order was not valid.
+        flash[:alert] = "Varor i varukorgen finns inte i lager."
         format.html { render :new }
       end
     end
+
   end
 
   def update
@@ -68,4 +80,18 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:name, :adress, :co, :zipcode, :city, :country, :d_adress, :d_co, :d_city, :d_country, :d_zipcode, :email, :mobile, :status)
     end
+
+    def valid_order?(order)
+      flag = true
+      order.orderrows.each do |orderrow|
+        if orderrow.quantity > Product.find(orderrow.product_id).stock
+          flag = false
+        end
+      end
+
+      flag
+
+    end
+
+
 end

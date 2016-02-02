@@ -42,16 +42,16 @@ class ProductsController < ApplicationController
 		@product = Product.new(product_params)
 
 		respond_to do |format|
-		    if @product.save
-		      format.html { redirect_to @product, notice: 'Produkten skapad.' }
-		      # format.js   {}
+	    if @product.save
+	      format.html { redirect_to @product, notice: 'Produkten skapad.' }
+	      # format.js   {}
 #		      format.json { render json: @product, status: :created, location: @product }
- 		      format.json { render json: @product }
-		    else
-		      format.html { render action: "new" }
-		      format.json { render json: @product.errors.full_messages, status: :unprocessable_entity }
-		    end
-		  end
+		      format.json { render json: @product }
+	    else
+	      format.html { render action: "new" }
+	      format.json { render json: @product.errors.full_messages, status: :unprocessable_entity }
+	    end
+	  end
 
 		# if @product.save
 		# 	redirect_to @product, notice:
