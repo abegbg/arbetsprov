@@ -38,7 +38,12 @@ class OrdersController < ApplicationController
       if valid_order?(@order)
         if @order.save
           #Lower quantity on product here? 
-          #lower_product_quantity(@order) ##Should this be part of the model and not in the controller?
+          #lower_product_quantity(@order) #Should be done in the product controller.
+          @cartrows.each do |cartrow|
+            cartrow.product.lower_quantity(cartrow.quantity)
+          end
+
+
           empty_cart
 
           format.html { redirect_to @order, notice: 'Order skapad.' }
@@ -81,6 +86,7 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:name, :adress, :co, :zipcode, :city, :country, :d_adress, :d_co, :d_city, :d_country, :d_zipcode, :email, :mobile, :status)
     end
 
+    #Ganska säker på att detta kan göras så mycket bättre.
     def valid_order?(order)
       flag = true
       order.orderrows.each do |orderrow|
@@ -88,10 +94,9 @@ class OrdersController < ApplicationController
           flag = false
         end
       end
-
       flag
-
     end
+
 
 
 end

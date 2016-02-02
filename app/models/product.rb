@@ -15,4 +15,10 @@ class Product < ActiveRecord::Base
 		stock == 0
 	end
 
+	def lower_quantity(quantity)
+		self.stock = self.stock - quantity
+		self.save
+	end
+
+
 end
