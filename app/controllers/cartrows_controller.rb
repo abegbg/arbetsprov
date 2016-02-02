@@ -3,12 +3,12 @@ class CartrowsController < ApplicationController
 	before_action :set_product, only: [:new, :create]
 
 	def index
-	#	if cookies[:cart] 
-			@cart_id = cookies[:cart]
-			@cart = Cart.find_by id: @cart_id
-			@cartrows = Cartrow.where(cart_id: @cart_id)
+	#	if cookies[:cart]
+			get_cart_from_cookie
+#			@cart_id = cookies[:cart]
+#			@cart = Cart.find_by id: @cart_id
+			get_cartrows_from_cart(@cart)
 	#	end
-
 	end
 
 	def new

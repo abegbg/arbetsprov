@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  include CartrowsHelper
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -13,6 +14,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    get_cart_from_cookie
+    get_cartrows_from_cart(@cart)
   end
 
   def edit

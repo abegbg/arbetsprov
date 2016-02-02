@@ -12,9 +12,12 @@ module CartrowsHelper
 			@cart = Cart.new
 			@cart.save
 			cookies[:cart] = @cart.id
-			@cart_id = cookies[:cart]
 		end
+		@cart_id = cookies[:cart]
 	end
 
+	def get_cartrows_from_cart(cart)
+		@cartrows = Cartrow.where(cart_id: cart.id)
+	end
 
 end
