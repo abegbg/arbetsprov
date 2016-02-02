@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 	  resources :orderrows 
 	end
 
-  resources :cart
+  resources :carts
 
   get 'cartrows', to: 'cartrows#index'
 

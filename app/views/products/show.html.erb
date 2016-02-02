@@ -18,6 +18,7 @@
 	<p>BAPP: Här skall class ändras eller skapas.</p>
 	<p>
 		Cart: <%= @cart %>
+		Cart_id : <%= @cart_id %>
 	</p>
 	<!--< %= form_for @cartrow, remote: true, format: :json, html: {class: :cart_form} do |f| %>-->
 	<%= form_for ([@product, @cartrow]) do |f| %>

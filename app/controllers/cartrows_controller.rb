@@ -2,14 +2,11 @@ class CartrowsController < ApplicationController
 	before_action :set_product, only: [:new, :create]
 
 	def index
-		if cookies[:cart] 
+	#	if cookies[:cart] 
 			@cart_id = cookies[:cart]
 			@cart = Cart.find_by id: @cart_id
 			@cartrows = Cartrow.where(cart_id: @cart_id)
-			#@cartrows = Cartrow.all
-		else
-			@cartrows = Cartrow.all
-		end
+	#	end
 
 	end
 
@@ -40,16 +37,9 @@ class CartrowsController < ApplicationController
 				format.json { render json: @cartrow.errors.full_messages, status: :unprocessable_entity }
 			end
 		end
-
-
-    # if @review.save
-    #   redirect_to movie_reviews_path(@movie),
-    #     notice: "Thanks for your review!"
-    # else
-    #   render :new
-    # end
-
 	end
+
+
 
 private
 

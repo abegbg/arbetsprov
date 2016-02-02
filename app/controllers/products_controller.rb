@@ -7,19 +7,16 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
-	
-		#Skapa jag skapa en egen för cartrow och köra en render på den?
-#		@cartrow = @product.cartrows.new
 		@cartrow = Cartrow.new
-
 		#Har jag ingen cart vill jag skapa en, annars läsa in den.
 		if cookies[:cart] 
-			cart_id = cookies[:cart]
-			@cart = Cart.find_by id: cart_id
+			@cart_id = cookies[:cart]
+			@cart = Cart.find_by id: @cart_id
 		else
 			@cart = Cart.new
 			@cart.save
 			cookies[:cart] = @cart.id
+			@cart_id = cookies[:cart]
 		end
 	end
 

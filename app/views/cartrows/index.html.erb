@@ -5,11 +5,17 @@ Cart: <%= @cart %>
 Cartrows: <%= @cartrows %>
 
 
+<div>
+	<% @cartrows.each do |cartrow| %>
+		<p><%= cartrow.product.name %></p>
+		<p><%= cartrow.cart_id %></p>
+		<hr />
+	<% end %>
+</div>
 
-<% @cartrows.each do |cartrow| %>
-	<p><%= cartrow.product.name %></p>
-	<p><%= cartrow.cart_id %></p>
-	<hr />
-<% end %>
-
-<%= link_to "Töm varukorgen" %>
+<div>
+	<% if @cart %>
+		<%= link_to "Töm varukorgen", cart_path(@cart), :controller => 'carts', :method => :delete, :id => "empty_cart" %>
+		<%= link_to "Gå till kassan", cartrows_path, :id => "to_checkout" %>
+	<% end %>
+</div>
