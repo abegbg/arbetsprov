@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        ##EMPTY CART BAPP
+        empty_cart
         format.html { redirect_to @order, notice: 'Order skapad.' }
       else
         format.html { render :new }
