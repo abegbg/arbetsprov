@@ -1,1 +1,7 @@
-CARTROWS
+<div>
+	<% @cartrows.each do |cartrow| %>
+		<p><%= cartrow.product.name %></p>
+		<p><%= cartrow.cart_id %></p>
+		<hr />
+	<% end %>
+</div>
