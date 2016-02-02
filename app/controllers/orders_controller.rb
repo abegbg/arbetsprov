@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   include CartrowsHelper
+  include OrderrowsHelper
+
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,14 +20,21 @@ class OrdersController < ApplicationController
     get_cartrows_from_cart(@cart)
   end
 
+
   def edit
   end
 
   def create
     @order = Order.new(order_params)
 
+    #Spara ner Cartrows till Orderrows.
+    get_cart_from_cookie
+    get_cartrows_from_cart(@cart)
+    cart_to_orderrows(@cartrows, @order)
+
     respond_to do |format|
       if @order.save
+        ##EMPTY CART BAPP
         format.html { redirect_to @order, notice: 'Order skapad.' }
       else
         format.html { render :new }
