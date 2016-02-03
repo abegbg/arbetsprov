@@ -4,19 +4,23 @@
     <ol>
       <li class="required">
         <%= f.label :name, "Namn" %>
-        <%= f.text_field :name, size: 40, autofocus: true %>
+        <%= f.text_field :name, size: 20, autofocus: true %>
       </li>
       <li class="required">
         <%= f.label :email %>
-        <%= f.email_field :email, size: 40 %>
+        <%= f.email_field :email, size: 20 %>
       </li>
       <li class="required">
         <%= f.label :password, "Lösenord" %>
-        <%= f.password_field :password, size: 40 %>
+        <%= f.password_field :password, size: 20 %>
       </li>
       <li class="required">
         <%= f.label :password_confirmation, "Bekräfta Lösenord" %>
-        <%= f.password_field :password_confirmation, size: 40 %>
+        <%= f.password_field :password_confirmation, size: 20 %>
+      </li>
+      <li class="required">
+        <%= f.label :superuser %>
+        <%= f.text_field :superuser, size: 20 %>
       </li>
     </ol>
     <p>

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	validates :email, presence: true,
 								 format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i },
 								 uniqueness: { case_sensitive: false }
+	validates :superuser, presence: true, inclusion: { in: 0..9 }, numericality: { only_integer: true }
 
 
 	def self.authenticate(email, password)
