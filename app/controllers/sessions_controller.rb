@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
 			# session
 			session[:user_id] = user.id
 			flash[:notice] = "#{user.name} är inloggad!"
-			redirect_to user
+			redirect_to(session[:intended_url] || user)
+			session[:intended_url] = nil
 		else
 			flash.now[:alert] = "Felaktiga inloggningsuppgifter!"
 			render :new
