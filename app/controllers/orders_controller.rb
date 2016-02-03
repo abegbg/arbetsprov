@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   include CartrowsHelper
   include OrderrowsHelper
 
+  before_action :require_signin, only: [:index, :update, :destroy]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
