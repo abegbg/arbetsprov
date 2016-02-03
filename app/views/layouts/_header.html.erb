@@ -1,7 +1,13 @@
 <header id="header">
 	E-handelsbutik
 
-	<%= link_to "Skapa konto", new_user_path, class: "button" %>
-	<%= link_to "Logga in", new_session_path, class: "button" %>
+
+	<% if current_user %>
+		<%= link_to current_user.name, current_user %>
+		<%= link_to "Logga ut", session_path, method: :delete, class: "button" %>
+	<% else %>
+		<%= link_to "Skapa konto", new_user_path, class: "button" %>
+		<%= link_to "Logga in", new_session_path, class: "button" %>
+	<% end %>
 
 </header>
