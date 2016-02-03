@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203201132) do
+ActiveRecord::Schema.define(version: 20160203230004) do
 
   create_table "cartrows", force: true do |t|
     t.integer  "cart_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160203201132) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "superuser",       default: 0
   end
 
 end

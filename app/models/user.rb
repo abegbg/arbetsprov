@@ -12,5 +12,8 @@ class User < ActiveRecord::Base
 		user && user.authenticate(password)
 	end
 
+	def superuser?
+		superuser > 0
+	end
 
 end

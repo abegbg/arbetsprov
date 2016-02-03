@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :require_signin
-
+	before_action :require_superuser, except: [:index, :show]
 
 	def index
 		@users = User.all
@@ -55,5 +55,10 @@ private
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end
 
+	def require_superuser
+		unless current_user.superuser?
+			redirect_to root_url, alert: "Ajsing bajsing."
+		end
+	end
 
 end
