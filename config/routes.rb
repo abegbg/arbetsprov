@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :users
-
 	root "products#index"
 
 	resources :products do
@@ -15,5 +13,7 @@ Rails.application.routes.draw do
   resources :carts
 
   get 'cartrows', to: 'cartrows#index'
+
+  resources :users
 
 end

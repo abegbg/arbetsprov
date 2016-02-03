@@ -1,0 +1,11 @@
+@import "colors";
+
+.button {
+	font-size:    	16px;
+	text-decoration:none;
+	padding:      	8px;
+	border-radius:	6px;
+	box-shadow:   	0px;
+	border: 1px solid $subdued-color;
+	background-color: $primary-background-color;
+}

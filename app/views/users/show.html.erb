@@ -1,0 +1,16 @@
+
+<article id="user">
+	<header>
+		<p><%= @user.name %></p>
+		<p><%= @user.email %></p>
+	</header>
+	<footer>
+		<nav>
+			<%= link_to "Edit adminkonto", edit_user_path(@user), class: "button" %>
+			<%= link_to "Tag bort användaren", @user,
+									method: :delete,
+									data: { confirm: 'Är du säker på att du vill ta bort användaren'},
+									class: 'button' %>
+		</nav>
+	</footer>
+</article>
