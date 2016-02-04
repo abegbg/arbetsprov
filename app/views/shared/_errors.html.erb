@@ -2,7 +2,8 @@
   <section id="errors">
     <header>
       <h2>
-        <%= object.class.name.titleize.downcase %> kunde inte sparas. 
+        <%= object.class.name.titleize.downcase %> kunde inte sparas.
+        <%= object.class.name.constantize %>
       </h2>
       <h3>
         Justera följande fel:
@@ -10,17 +11,25 @@
     </header>
     <ul>
       <% object.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="error"><%= message %></li>
       <% end %>
     </ul>
   </section>
 </div>
 
 
-  <div id="response_explanation" class="flash notice" style='display:none;'>
-    <header>
-      <h2>
-        <%= object.class.name.titleize.downcase %> har sparats. 
-      </h2>
-    </header>
-  </div>
+<div id="response_explanation" class="flash notice" style='display:none;'>
+  <header>
+    <h2>
+      <%= object.class.name.titleize.downcase %> har sparats. 
+    </h2>
+  </header>
+</div>
+
+
+<!-- 
+      $error_container_ul = $("ul", $error_container)
+    if $("li", $error_container_ul).length
+      $("li", $error_container_ul).remove()
+      $error_container.hide()
+       -->

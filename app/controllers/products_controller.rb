@@ -21,23 +21,22 @@ class ProductsController < ApplicationController
 
 	def update
 		@product = Product.find(params[:id])
-		if @product.update(product_params)
-			format.html { redirect_to @product, notice: 'Produkten är uppdaterad.' }
-		  format.json { render json: @product }
-		else
-			format.html { render action: 'edit' }
-			format.json { render json: @product.errors.full_messages, status: :unprocessable_entity }
+		respond_to do |format|
+			if @product.update(product_params)
+				format.html { redirect_to @product, notice: 'Produkten är uppdaterad.' }
+			  format.json { render json: @product, notice: 'Produkten är uppdaterad.' }
+			else
+				format.html { render action: 'edit' }
+				format.json { render json: @product.errors.full_messages, status: :unprocessable_entity }
+			end
 		end
-
-		# 	redirect_to @product, notice: "Produkten är uppdaterad"
-		# else
-		# 	render :edit
-		# end
 	end
+
 
 	def new
 		@product = Product.new
 	end
+
 
 	def create
 		@product = Product.new(product_params)
@@ -45,23 +44,12 @@ class ProductsController < ApplicationController
 		respond_to do |format|
 	    if @product.save
 	      format.html { redirect_to @product, notice: 'Produkten skapad.' }
-	      # format.js   {}
-#		      format.json { render json: @product, status: :created, location: @product }
-		      format.json { render json: @product, notice: 'Produkten är skapad.' }
+	      format.json { render json: @product, notice: 'Produkten är skapad.' }
 	    else
 	      format.html { render action: "new" }
 	      format.json { render json: @product.errors.full_messages, status: :unprocessable_entity }
 	    end
 	  end
-
-		# if @product.save
-		# 	redirect_to @product, notice:
-		# 	 "Produkten skapad"
-		# else
-		# 	render :new
-		# end
-
-
 	end
 
 	def destroy
@@ -69,8 +57,7 @@ class ProductsController < ApplicationController
 		#Borde ha en flagga som inte visar produkten i stället.
 		@product = Product.find(params[:id])
 		@product.destroy
-		redirect_to products_url
-
+		redirect_to products_url, notice: "Produkten borttagen."
 	end
 
 

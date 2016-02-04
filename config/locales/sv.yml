@@ -8,7 +8,7 @@ sv:
           has_one: Kan inte ta bort post då beroende %{record} finns
           has_many: Kan inte ta bort poster då beroende %{record} finns
     models:
-      product: Produkt
+      product: 'Produkt'
     attributes:
       product:
         name: Namn
