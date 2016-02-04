@@ -1,11 +1,6 @@
-
-
-
 <%= form_for(@product, remote: true, format: :json, html: {class: :product_form}) do |f| %>
 
 	<%= render 'shared/errors', object: @product %>
-
-
 
 	<p>
 		<%= f.label :name, "Namn" %> <br />

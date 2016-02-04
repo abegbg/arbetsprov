@@ -7,6 +7,8 @@ $(document).ready ->
 
   $(document).bind "ajaxSuccess", "form.product_form", (event, xhr, settings) ->
     $product_form = $(event.data)
+    $response_container = $("#response_explanation", $product_form)
+    $response_container.show()  if $response_container.is(":hidden")
     $error_container = $("#error_explanation", $product_form)
     $error_container_ul = $("ul", $error_container)
     $("<p>").html(xhr.responseJSON.title + " saved.").appendTo $product_form

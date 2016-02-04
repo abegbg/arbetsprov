@@ -1,3 +1,5 @@
+@import "colors";
+
 body {
   background-color: #fff;
   color: #333;
@@ -48,11 +50,11 @@ div {
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid $negative-response;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
+  background-color: $primary-background-color;
   h2 {
     text-align: left;
     font-weight: bold;
@@ -68,3 +70,4 @@ div {
     list-style: square;
   }
 }
+

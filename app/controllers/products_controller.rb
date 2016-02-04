@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
 	      format.html { redirect_to @product, notice: 'Produkten skapad.' }
 	      # format.js   {}
 #		      format.json { render json: @product, status: :created, location: @product }
-		      format.json { render json: @product }
+		      format.json { render json: @product, notice: 'Produkten är skapad.' }
 	    else
 	      format.html { render action: "new" }
 	      format.json { render json: @product.errors.full_messages, status: :unprocessable_entity }
