@@ -1,21 +1,17 @@
-<% if object.errors.any? %>
-<section id="errors">
-  <header>
-    <h2>
-      <%= object.class.name.titleize.downcase %> kunde inte sparas. 
-    </h2>
-    <h3>
-      Justera följande <%= object.errors.count %> fel:
-    </h3>
-  </header>
-  <ul>
-    <% object.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-</section>
-<% end %>
-
-<!--
-< % = @product.errors.full_messages.to_sentence %>
--->
+<div id="error_explanation" style='display:none;'>
+  <section id="errors">
+    <header>
+      <h2>
+        <%= object.class.name.titleize.downcase %> kunde inte sparas. 
+      </h2>
+      <h3>
+        Justera följande fel:
+      </h3>
+    </header>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+</div>
