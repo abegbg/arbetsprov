@@ -1,6 +1,7 @@
 class Cartrow < ActiveRecord::Base
   belongs_to :cart
-  belongs_to :product
+#  belongs_to :product
+
 
   validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
@@ -12,7 +13,6 @@ class Cartrow < ActiveRecord::Base
 		# 		break #Not sure if it is good practice to use break.
 		# 	end
 		# end
-
   # end
 
 

@@ -17,11 +17,11 @@ class CartrowsController < ApplicationController
 	# end
 
 	def create
-puts("----------------") 
+		puts("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------") 
 
 		get_cart_from_cookie
-		@cartrow = @product.cartrows.new(cartrow_params)
-		@cartrow.cart = @cart
+		@cartrow = @cart.cartrows.new(cartrow_params)
+#		@cartrow.cart = @cart
 
 		#Skapa metod som heter merge eller något BAPP
 #		merge_rows(@cart_row, @cart)
