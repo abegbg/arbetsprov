@@ -10,6 +10,8 @@
 
 <%= render 'layouts/header' %>
 
+<p id="notice" class="flash notice" style="display:none;"><%= notice %>test</p>
+
 <% if flash[:notice] %>
 	<p class="flash notice">
 		<%= flash[:notice] %>
