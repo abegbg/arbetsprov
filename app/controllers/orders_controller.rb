@@ -26,11 +26,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #Check so that number of products in the cart is available. Should be done in the model.
-
+    #Check so that number of products in the cart is available. Should be done in the model.BAPP
     @order = Order.new(order_params)
 
-    #Spara ner Cartrows till Orderrows.
+    #Save Cartrows to Orderrows.
     get_cart_from_cookie
     get_cartrows_from_cart(@cart)
     cart_to_orderrows(@cartrows, @order)
@@ -43,10 +42,8 @@ class OrdersController < ApplicationController
           @cartrows.each do |cartrow|
             cartrow.product.lower_quantity(cartrow.quantity)
           end
-
-
           empty_cart
-
+          OrderMailer.send_order_email(@order).deliver
           format.html { redirect_to @order, notice: 'Order skapad.' }
         else
           format.html { render :new }
