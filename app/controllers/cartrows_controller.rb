@@ -18,31 +18,30 @@ class CartrowsController < ApplicationController
 
 	def create
 		puts("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------") 
-fail
+
 		get_cart_from_cookie
 		@cartrow = @cart.cartrows.new(cartrow_params)
 		@cartrow.product_id = @product.id
 
 		#Skapa metod som heter merge eller något BAPP
-#		merge_rows(@cart_row, @cart)
+		#@cartrow.merge_rows(@cartrow, @cart)
 
 		#Check if product already exists in cart.
-		# @cart.cartrows.each do |cartrow|
-		# 	if (cartrow.product_id == @cartrow.product_id && cartrow.id != @cartrow.id)
-		# 		cartrow.quantity = cartrow.quantity + @cartrow.quantity
-		# 		@cartrow = cartrow
-		# 		break #Not sure if it is good practice to use break.
-		# 	end
-		# end
-
+		@cart.cartrows.each do |cartrow|
+			if (cartrow.product_id == @cartrow.product_id && cartrow.id != @cartrow.id)
+				cartrow.quantity = cartrow.quantity + @cartrow.quantity
+				@cartrow = cartrow
+				break #Not sure if it is good practice to use break.
+			end
+		end
 
 		respond_to do |format|
 			if @cartrow.save
-#				format.html { redirect_to @product, notice: 'Produkten är tillagd i varukorgen.' }
-#			  format.json { render json: @product }
+				format.html { redirect_to @product, notice: 'Produkten är tillagd i varukorgen.' }
+			  format.json { render json: @product }
 			else
-#				format.html { render action: 'edit' }
-#				format.json { render json: @cartrow.errors.full_messages, status: :unprocessable_entity }
+				format.html { render action: 'edit' }
+				format.json { render json: @cartrow.errors.full_messages, status: :unprocessable_entity }
 			end
 		end
 	end

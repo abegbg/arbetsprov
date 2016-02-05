@@ -13,8 +13,11 @@
 	<p>
 		Bild: <%= @product.image %>
 	</p>
+	< %= form_for ([@product, @cartrow]), remote: true, format: :json, html: {class: :cart_form} do |f| %>
 
-	<%= form_for ([@cart, @cartrow]), remote: true, html: {class: :cart_form} do |f| %>
+Cart:	<%= @cart.id %>BAPP
+
+	<%= form_for ([@cart, @cartrow]),  html: {class: :cart_form} do |f| %>
 		<p>
 			<%= f.label :quantity, "Antal" %> <br />
 			<%= f.text_field :quantity, autofocus: true %>
