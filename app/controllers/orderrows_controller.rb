@@ -17,8 +17,8 @@ class OrderrowsController < ApplicationController
 		@order = @orderrow.order
 
 
-		old_quantity = @orderrow.quantity.to_f
-		new_quantity = params[:orderrow][:quantity].to_f
+		old_quantity = @orderrow.quantity.to_i
+		new_quantity = params[:orderrow][:quantity].to_i
 		difference = old_quantity - new_quantity
 
 		@orderrow.quantity = new_quantity

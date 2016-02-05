@@ -8,30 +8,30 @@
 </head>
 <body>
 
-<%= render 'layouts/header' %>
+	<%= render 'layouts/header' %>
 
-<p id="notice" class="flash notice" style="display:none;"><%= notice %>test</p>
+	<p id="notice" class="flash notice" style="display:none;"><%= notice %>test</p>
 
-<% if flash[:notice] %>
-	<p class="flash notice">
-		<%= flash[:notice] %>
-	</p>
-<% end %>
+	<% if flash[:notice] %>
+		<p class="flash notice">
+			<%= flash[:notice] %>
+		</p>
+	<% end %>
 
-<% if flash[:alert] %>
-	<p class="flash alert">
-		<%= flash[:alert] %>
-	</p>
-<% end %>
-
-
-
-<%= render 'layouts/menu' %>
-
-<%= yield %>
+	<% if flash[:alert] %>
+		<p class="flash alert">
+			<%= flash[:alert] %>
+		</p>
+	<% end %>
 
 
-<%= render 'layouts/footer' %>
+
+	<%= render 'layouts/menu' %>
+
+	<%= yield %>
+
+
+	<%= render 'layouts/footer' %>
 
 </body>
 </html>

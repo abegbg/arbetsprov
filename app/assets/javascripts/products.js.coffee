@@ -5,12 +5,14 @@
 
 $(document).ready ->
 
+  #Why oooh why does it enter here when I am doing stuff with orderrows.
   $(document).bind "ajaxSuccess", "form.product_form", (event, xhr, settings) ->
     $product_form = $(event.data)
-    $response_container = $("#response_explanation", $product_form)
-    
-    $response_container
-    $response_container.show() if $response_container.is(":hidden")
+    $flash = $("#flash")
+    $flash.hide()
+    $notice = $("p#notice")
+    $notice.show() if $notice.is("hidden")
+    $notice.replaceWith("<p id=notice class='flash notice'>Produkten är uppdaterad.</p>")
     $error_container = $("#error_explanation", $product_form)
     $error_container_ul = $("ul", $error_container)
     #$("<p>").html(xhr.responseJSON.title + " saved.").appendTo $product_form
@@ -20,9 +22,11 @@ $(document).ready ->
 
   $(document).bind "ajaxError", "form.product_form", (event, jqxhr, settings, exception) ->
     $product_form = $(event.data)
-    $response_container = $("#response_explanation", $product_form)
-    $response_container.hide()
-    $error_container = $("#error_explanation", $product_form)
+    $flash = $(".flash")
+    $flash.hide()
+    $notice = $("#notice")
+    $notice.show() if $notice.is("hidden")
+    $notice.replaceWith("<p id=notice class='flash alert'>Produkten kunde inte sparas. Se felmeddelande nedan.</p>")
     if $("li.error", $error_container_ul).length
       $("li.error", $error_container_ul).remove()
       $error_container.hide()
