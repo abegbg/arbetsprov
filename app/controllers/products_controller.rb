@@ -21,9 +21,10 @@ class ProductsController < ApplicationController
 
 	def update
 		@product = Product.find(params[:id])
+
 		respond_to do |format|
 			if @product.update(product_params)
-				format.html { redirect_to @product, notice: 'Produkten är uppdaterad.' }
+				format.html { redirect_to @product, notice: 'Produkten är uppdaterad. Notice i controller' }
 			  format.json { render json: @product, notice: 'Produkten är uppdaterad.' }
 			else
 				format.html { render action: 'edit' }
@@ -66,9 +67,6 @@ private
 	def product_params
 		params.require(:product).
 										permit(:name, :description, :price, :stock, :image)
-
 	end
-
-
 
 end

@@ -7,9 +7,12 @@ $(document).ready ->
 
   $(document).bind "ajaxSuccess", "form.orderrow_form", (event, xhr, settings) ->
     $orderrow_form = $(event.data)
-    $notice = $("#notice")
+    $flash = $("#flash")
+    $flash.hide()
+    $notice = $("p#notice")
     $notice.show() if $notice.is("hidden")
     $notice.replaceWith("<p id=notice class='flash notice'>Orderraden uppdaterad</p>")
+
 
   $(document).bind "ajaxError", "form.orderrow_form", (event, jqxhr, settings, exception) ->
     $orderrow_form = $(event.data)

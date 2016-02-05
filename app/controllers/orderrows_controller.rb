@@ -16,9 +16,8 @@ class OrderrowsController < ApplicationController
 		@product = Product.find(@orderrow.product_id)
 		@order = @orderrow.order
 
-
-		old_quantity = @orderrow.quantity.to_f
-		new_quantity = params[:orderrow][:quantity].to_f
+		old_quantity = @orderrow.quantity.to_i
+		new_quantity = params[:orderrow][:quantity].to_i
 		difference = old_quantity - new_quantity
 
 		@orderrow.quantity = new_quantity
@@ -30,9 +29,9 @@ class OrderrowsController < ApplicationController
 		
 		#Ändra antalet i orderraden.
 		respond_to do |format|
-			if @product.save && @orderrow.save
+			if @orderrow.save && @product.save
 			  puts('Det gick bra')
-				#format.html { redirect_to @order, notice: 'Orderraden är uppdaterad.' }
+#				format.html { redirect_to @order, notice: 'Orderraden är uppdaterad.' }
 			  format.json { render json: @order, notice: 'Orderraden är uppdaterad.' }
 			else
 			  puts('Det gick inte bra')

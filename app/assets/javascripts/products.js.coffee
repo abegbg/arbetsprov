@@ -7,10 +7,12 @@ $(document).ready ->
 
   $(document).bind "ajaxSuccess", "form.product_form", (event, xhr, settings) ->
     $product_form = $(event.data)
+    $flash = $(".flash")
+    $flash.hide()
     $response_container = $("#response_explanation", $product_form)
-    
-    $response_container
-    $response_container.show() if $response_container.is(":hidden")
+    $notice = $("p#notice")
+    $notice.show() if $notice.is("hidden")
+    $notice.replaceWith("<p id=notice class='flash notice'>Produkten är uppdaterad.</p>")
     $error_container = $("#error_explanation", $product_form)
     $error_container_ul = $("ul", $error_container)
     #$("<p>").html(xhr.responseJSON.title + " saved.").appendTo $product_form
@@ -20,8 +22,11 @@ $(document).ready ->
 
   $(document).bind "ajaxError", "form.product_form", (event, jqxhr, settings, exception) ->
     $product_form = $(event.data)
-    $response_container = $("#response_explanation", $product_form)
-    $response_container.hide()
+    $flash = $(".flash")
+    $flash.hide()
+    $notice = $("#notice")
+    $notice.show() if $notice.is("hidden")
+    $notice.replaceWith("<p id=notice class='flash alert'>Produkten kunde inte sparas. Se felmeddelande nedan.</p>")
     $error_container = $("#error_explanation", $product_form)
     if $("li.error", $error_container_ul).length
       $("li.error", $error_container_ul).remove()
