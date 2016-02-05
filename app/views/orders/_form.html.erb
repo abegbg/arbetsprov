@@ -65,6 +65,11 @@
     <%= f.text_field :mobile %>
   </div>
 
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.select :status, Order::STATUSES %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
