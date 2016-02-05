@@ -31,12 +31,10 @@ class OrderrowsController < ApplicationController
 		#Ändra antalet i orderraden.
 		respond_to do |format|
 			if @product.save && @orderrow.save
-			  puts('Det gick bra')
-				#format.html { redirect_to @order, notice: 'Orderraden är uppdaterad.' }
+				format.html { redirect_to @order, notice: 'Orderraden är uppdaterad.' }
 			  format.json { render json: @order, notice: 'Orderraden är uppdaterad.' }
 			else
-			  puts('Det gick inte bra')
-#				format.html { render action: 'index' }
+				format.html { render action: 'index' }
 				format.json { render json: @orderrow.errors.full_messages, status: :unprocessable_entity }
 			end
 		end

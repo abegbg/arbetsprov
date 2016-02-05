@@ -4,8 +4,9 @@
 
 
 $(document).ready ->
-
+#Hur får jag den att bara gå in här och inte i den för produkt
   $(document).bind "ajaxSuccess", "form.orderrow_form", (event, xhr, settings) ->
+    alert('Hi orderrow')
     $orderrow_form = $(event.data)
     $flash = $("#flash")
     $flash.hide()

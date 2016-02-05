@@ -7,6 +7,7 @@ $(document).ready ->
 
   #Why oooh why does it enter here when I am doing stuff with orderrows.
   $(document).bind "ajaxSuccess", "form.product_form", (event, xhr, settings) ->
+    alert('Hi prod')
     $product_form = $(event.data)
     $flash = $("#flash")
     $flash.hide()
