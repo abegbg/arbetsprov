@@ -5,6 +5,12 @@ class CartsController < ApplicationController
 		@cart = Cart.new
 	end
 
+
+	def show
+		get_cart_from_cookie #BAPP KAN JAG LÄGGA DE HÄR I MODELLEN INTE I EN HELPER?
+		@cartrows = get_cartrows_from_cart(@cart)
+	end
+
 	def destroy
 		if cookies[:cart] 
 			cart_id = cookies[:cart]
@@ -16,7 +22,7 @@ class CartsController < ApplicationController
 		else
 			##Do nothing.
 		end
-		redirect_to cartrows_url , notice: 'Varukorgen tömd.'
+		redirect_to cart_url , notice: 'Varukorgen tömd.'
 	end
 
 

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
 	root "products#index"
 
-	resources :products do
+	resources :products
+
+  resources :carts do
     resources :cartrows
   end
 
@@ -17,7 +19,6 @@ Rails.application.routes.draw do
 
 
 
-  resources :carts
 
   get 'cartrows', to: 'cartrows#index'
 

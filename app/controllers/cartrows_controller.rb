@@ -3,7 +3,7 @@ class CartrowsController < ApplicationController
 	before_action :set_product, only: [:new, :create]
 
 	def index
-	#	if cookies[:cart]
+	#	if cookies[:cart] BAPP
 			get_cart_from_cookie
 #			@cart_id = cookies[:cart]
 #			@cart = Cart.find_by id: @cart_id
@@ -11,15 +11,29 @@ class CartrowsController < ApplicationController
 	#	end
 	end
 
-	def new
-		@cartrow = @product.cartrows.new
-	end
+	#Behövs denna? Tror inte det. BAPP 
+	# def new
+	# 	@cartrow = @product.cartrows.new
+	# end
 
 	def create
-		get_cart_from_cookie
+puts("----------------") 
 
+		get_cart_from_cookie
 		@cartrow = @product.cartrows.new(cartrow_params)
 		@cartrow.cart = @cart
+
+		#Skapa metod som heter merge eller något BAPP
+#		merge_rows(@cart_row, @cart)
+		#Check if product already exists in cart.
+		# @cart.cartrows.each do |cartrow|
+		# 	if cartrow.product_id == @cartrow.product_id
+		# 		cartrow.quantity = cartrow.quantity + @cartrow.quantity
+		# 		@cartrow = cartrow
+		# 		break #Not sure if it is good practice to use break.
+		# 	end
+		# end
+
 
 		respond_to do |format|
 			if @cartrow.save
@@ -41,7 +55,8 @@ private
   end
 
   def set_product
-		@product = Product.find(params[:product_id])  	  	
+  	cartrow = params[:cartrow]
+		@product = Product.find(cartrow.fetch(:product_id))
   end
 
 end
