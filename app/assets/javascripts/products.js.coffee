@@ -6,8 +6,8 @@
 $(document).ready ->
 
   #Why oooh why does it enter here when I am doing stuff with orderrows.
-  $(document).bind "ajaxSuccess", "form.product_form", (event, xhr, settings) ->
-    alert('Hi prod')
+  $("form.product_form").on("ajax:success", (e, data, status, xhr) ->
+#  $(document).bind "ajaxSuccess", "form.product_form", (event, xhr, settings) ->
     $product_form = $(event.data)
     $flash = $("#flash")
     $flash.hide()
@@ -20,8 +20,10 @@ $(document).ready ->
     if $("li.error", $error_container_ul).length
       $("li.error", $error_container_ul).remove()
       $error_container.hide()
+    )
 
-  $(document).bind "ajaxError", "form.product_form", (event, jqxhr, settings, exception) ->
+  $("form.product_form").on("ajax:error", (e, data, status, xhr) ->
+#  $(document).bind "ajaxError", "form.product_form", (event, jqxhr, settings, exception) ->
     $product_form = $(event.data)
     $flash = $(".flash")
     $flash.hide()
@@ -35,3 +37,4 @@ $(document).ready ->
     $error_container.show()  if $error_container.is(":hidden")
     $.each jqxhr.responseJSON, (index, message) ->
       $("<li class=error>").html(message).appendTo $error_container_ul
+    )

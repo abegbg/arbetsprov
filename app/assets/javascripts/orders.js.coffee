@@ -3,24 +3,33 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$(document).ready ->
+
+#$(document).ready ->
+#  $("form.orderrow_form").on("ajax:success", (e, data, status, xhr) ->
+#      alert("Success!");
+#  ).on "ajax:error", (e, xhr, status, error) ->
+#     alert("FAIL");
+
 #Hur får jag den att bara gå in här och inte i den för produkt
-  $(document).bind "ajaxSuccess", "form.orderrow_form", (event, xhr, settings) ->
-    alert('Hi orderrow')
+
+$(document).ready ->
+
+  $("form.orderrow_form").on("ajax:success", (e, data, status, xhr) ->
+#  $(document).bind "ajaxSuccess", "form.orderrow_form", (event, xhr, settings) ->
     $orderrow_form = $(event.data)
     $flash = $("#flash")
     $flash.hide()
     $notice = $("p#notice")
     $notice.show() if $notice.is("hidden")
-    $notice.replaceWith("<p id=notice class='flash notice'>Orderraden uppdaterad</p>")
+    $notice.replaceWith("<p id=notice class='flash notice'>Orderraden uppdaterad</p>"))
 
 
-
-  $(document).bind "ajaxError", "form.orderrow_form", (event, jqxhr, settings, exception) ->
+  $("form.orderrow_form").on("ajax:error", (e, data, status, xhr) ->
+#  $(document).bind "ajaxError", "form.orderrow_form", (event, jqxhr, settings, exception) ->
     $orderrow_form = $(event.data)
     $notice = $("#notice")
     $notice.show() if $notice.is("hidden")
-    $notice.replaceWith("<p id=notice class='flash alert'>Orderraden kunde inte uppdateras. Kontrollera lagerantal</p>")
+    $notice.replaceWith("<p id=notice class='flash alert'>Orderraden kunde inte uppdateras. Kontrollera lagerantal</p>"))
 
 
 
