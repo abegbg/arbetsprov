@@ -2,7 +2,7 @@
 	<% @cartrows.each do |cartrow| %>
 		<p><%= cartrow.product.name %></p>
 		<p><%= cartrow.quantity %> i beställningen</p>
-		<p>< %= cartrow.product.stock %> i lager</p>
+		<p><%= cartrow.product.stock %> i lager</p>
 		<p><%= cartrow.cart_id %></p>
 		<hr />
 	<% end %>

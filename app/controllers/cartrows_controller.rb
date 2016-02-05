@@ -21,6 +21,7 @@ class CartrowsController < ApplicationController
 
 		get_cart_from_cookie
 		@cartrow = @cart.cartrows.new(cartrow_params)
+		@cartrow.product_id = @product.id
 #		@cartrow.cart = @cart
 
 		#Skapa metod som heter merge eller något BAPP
