@@ -3,12 +3,17 @@
 	<li>
 	<!-- Jag får inte till det med att skicka på ett korrekt sätt. -->
  		<!-- < %= form_for(orderrow, format: :json, html: {class: :orderrow_form}, :url => {:controller => 'orderrows', :action => 'update_quantity'}) do |o| %> -->
- 		<%= form_for(orderrow, remote: true, format: :json, html: {class: :orderrow_form}, url: order_orderrow_path(@order, orderrow)) do |o| %>
-			<p>
-				<%= orderrow.id %> - <%= orderrow.order.name %> - <%= orderrow.product.name %>
-				<%= o.text_field :quantity, autofocus: true, size: 3 %> st
-			</p>
-		<% end %>
+		<p>
+	 		<% if !@order.sent? %>
+		 		<%= form_for(orderrow, remote: true, format: :json, html: {class: :orderrow_form}, url: order_orderrow_path(@order, orderrow)) do |o| %>
+						<%= orderrow.id %> - <%= orderrow.order.name %> - <%= orderrow.product.name %>
+						<%= o.text_field :quantity, autofocus: true, size: 3 %> st
+				<% end %>
+			<% else %>
+					<%= orderrow.id %> - <%= orderrow.order.name %> - <%= orderrow.product.name %>
+					<%= orderrow.quantity %> st
+			<% end %>
+		</p>
 	</li>
 <% end %>
 </ol>

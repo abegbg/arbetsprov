@@ -78,25 +78,44 @@ class OrdersController < ApplicationController
     end
   end
 
-  private
-    def set_order
-      @order = Order.find(params[:id])
+
+  def sendorder
+    @order = Order.find(params[:id])
+    #Man skulle ju vilja skicka in andra värden här. Detta är lite smått meningslöst.
+    #Hinner jag så kikar jag på det. BAPP
+    @order.orderrows.each do |orderrow|
+      orderrow.sent_quantity = orderrow.quantity
+    end
+    @order.status = "Skickad"
+
+    if @order.save
+      redirect_to @order, notice: "Ordern har markerats som skickad!"
+    else
+      render :new
     end
 
-    def order_params
-      params.require(:order).permit(:name, :adress, :co, :zipcode, :city, :country, :d_adress, :d_co, :d_city, :d_country, :d_zipcode, :email, :mobile, :status)
-    end
+  end
 
-    #Ganska säker på att detta kan göras så mycket bättre.
-    def valid_order?(order)
-      flag = true
-      order.orderrows.each do |orderrow|
-        if orderrow.quantity > Product.find(orderrow.product_id).stock
-          flag = false
-        end
+
+private
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def order_params
+    params.require(:order).permit(:name, :adress, :co, :zipcode, :city, :country, :d_adress, :d_co, :d_city, :d_country, :d_zipcode, :email, :mobile, :status)
+  end
+
+  #Ganska säker på att detta kan göras så mycket bättre.
+  def valid_order?(order)
+    flag = true
+    order.orderrows.each do |orderrow|
+      if orderrow.quantity > Product.find(orderrow.product_id).stock
+        flag = false
       end
-      flag
     end
+    flag
+  end
 
 
 
