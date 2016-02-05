@@ -26,6 +26,7 @@ class OrderrowsController < ApplicationController
 
 		#Man skulle kunna ha en koll på om den sätts till noll att man tar bort raden,
 		#men man kan diskutera om man inte skall visa borttagna rader för historikens skull.
+		#Hart valt att låta raden vara.
 		
 		#Ändra antalet i orderraden.
 		respond_to do |format|

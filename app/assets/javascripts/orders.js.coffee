@@ -19,14 +19,14 @@ $(document).ready ->
 
 
 
-    $response_container = $("#response_explanation", $orderrow_form)
-    $response_container.hide()
-    $error_container = $("#error_explanation", $orderrow_form)
-    if $("li.error", $error_container_ul).length
-      $("li.error", $error_container_ul).remove()
-      $error_container.hide()
-    $error_container_ul = $("ul", $error_container)
-    $error_container.show()  if $error_container.is(":hidden")
-    $.each jqxhr.responseJSON, (index, message) ->
-      $("<li class=error>").html(message).appendTo $error_container_ul
+#    $response_container = $("#response_explanation", $orderrow_form)
+#    $response_container.hide()
+#    $error_container = $("#error_explanation", $orderrow_form)
+#    if $("li.error", $error_container_ul).length
+#      $("li.error", $error_container_ul).remove()
+#      $error_container.hide()
+#    $error_container_ul = $("ul", $error_container)
+#    $error_container.show()  if $error_container.is(":hidden")
+#    $.each jqxhr.responseJSON, (index, message) ->
+#      $("<li class=error>").html(message).appendTo $error_container_ul
 

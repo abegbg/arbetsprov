@@ -14,30 +14,20 @@
 		Bild: <%= @product.image %>
 	</p>
 
-
 	<%= form_for ([@product, @cartrow]), remote: true, format: :json, html: {class: :cart_form} do |f| %>
-	<!--< %= form_for ([@product, @cartrow]) do |f| %>-->
 		<p>
 			<%= f.label :quantity, "Antal" %> <br />
 			<%= f.text_field :quantity, autofocus: true %>
 		</p>
 		<%= f.submit "Lägg i varukorgen" %>
 	<% end %>
-
-	<br />
-
-	Kanske kunna välja antal. BAPP
-
 </article>
 
-<div id="cartrows">
+<!-- <div id="cartrows"> BAPP
 	<ol id="row">
-
 	</ol>
-
 </div>
-
-
+ -->
 <%= link_to "Uppdatera produkt", edit_product_path(@product) %>
 <br />
 <%= link_to "Tag bort produkt", product_path(@product), method: :delete, data: {confirm: 'Är du säker?'} %>
