@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203230004) do
+ActiveRecord::Schema.define(version: 20160205120216) do
 
   create_table "cartrows", force: true do |t|
     t.integer  "cart_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160203230004) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sent_quantity", default: 0
   end
 
   add_index "orderrows", ["order_id"], name: "index_orderrows_on_order_id"
@@ -55,7 +56,7 @@ ActiveRecord::Schema.define(version: 20160203230004) do
     t.string   "d_zipcode"
     t.string   "email"
     t.string   "mobile"
-    t.integer  "status",     default: 0
+    t.string   "status",     default: "Ny"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
