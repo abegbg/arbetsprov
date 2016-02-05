@@ -10,8 +10,10 @@
       </h3>
     </header>
     <ul>
-      <% object.errors.full_messages.each do |message| %>
-        <li class="error"><%= message %></li>
+      <% if object %>
+        <% object.errors.full_messages.each do |message| %>
+          <li class="error"><%= message %></li>
+        <% end %>
       <% end %>
     </ul>
   </section>

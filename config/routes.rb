@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 	  resources :orderrows 
 	end
 
+#  patch 'orderrows/:id', to: 'orderrows#update_quantity', as: 'update_quantity'
+
+
+
   resources :carts
 
   get 'cartrows', to: 'cartrows#index'
