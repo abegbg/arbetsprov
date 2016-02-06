@@ -26,8 +26,10 @@
     <p>
       <% if @user.new_record? %>
         <%= f.submit "Skapa användare", class: "btn btn-primary" %>
+        <%= link_to "Tillbaka", users_path, class: "btn btn-primary" %>
       <% else %>
         <%= f.submit "Ändra användare", class: "btn btn-primary" %>
+        <%= link_to "Tillbaka", @user, class: "btn btn-primary" %>
       <% end %>
     </p>
   </fieldset>

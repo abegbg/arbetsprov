@@ -54,7 +54,6 @@
 				<% if current_user %>
 					<li class="active"><%= link_to current_user.name, current_user %></li>
 					<li class="active"><%= link_to "Logga ut", session_path, method: :delete, class: "btn btn-primary" %></li>
-					<li class="active"><%= link_to "Skapa konto", new_user_path, class: "btn btn-primary" %></li>
 				<% else %>
 					<li class="active"><%= link_to "Logga in", new_session_path, class: "btn btn-primary" %></li>
 				<% end %>
