@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 	  resources :orderrows 
 	end
 
-  get 'sendorder/:id' => 'orders#sendorder', as: 'sendorder'
+#  get 'confirmation' => 'orders#confirmation', as: 'confirmation'
 
 
 #  patch 'orderrows/:id', to: 'orderrows#update_quantity', as: 'update_quantity'

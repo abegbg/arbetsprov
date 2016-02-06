@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include CartrowsHelper
   include OrderrowsHelper
 
-  before_action :require_signin, only: [:index, :update, :destroy]
+  before_action :require_signin, only: [:index, :update, :destroy] #BAPP Vill ha med :show
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -12,7 +12,6 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @orderrows = @order.orderrows
-  
   end
 
   def new
@@ -34,9 +33,11 @@ class OrdersController < ApplicationController
     get_cartrows_from_cart(@cart)
     cart_to_orderrows(@cartrows, @order)
 
+
     respond_to do |format|
       if valid_order?(@order)
         if @order.save
+          @show_order = @order
           #Lower quantity on product here? 
           #lower_product_quantity(@order) #Should be done in the product controller.
           @cartrows.each do |cartrow|
@@ -44,7 +45,13 @@ class OrdersController < ApplicationController
           end
           empty_cart
           OrderMailer.send_order_email(@order).deliver
-          format.html { redirect_to @order, notice: 'Order skapad.' }
+          if current_user
+            format.html { redirect_to @order, notice: 'Order skapad.' }
+          else
+            # Måste komma vidare utan att gå till ordern. Nu kan man skriva vilket ordernummer som helst.
+            #Inte bästa sättet att lösa det känns det som.
+            format.html { render @order, notice: 'Order skapad.' }  
+          end
         else
           format.html { render :new }
         end
@@ -54,8 +61,9 @@ class OrdersController < ApplicationController
         format.html { render :new }
       end
     end
-
   end
+
+
 
   def update
     respond_to do |format|
@@ -66,6 +74,7 @@ class OrdersController < ApplicationController
       end
     end
   end
+
 
   #Vill nog snarare spara den och lägga undan.
   def destroy
