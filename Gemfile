@@ -38,3 +38,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+gem 'bootstrap-sass', '~> 3.3.1'
+#gem 'sass-rails', github: 'rails/sass-rails'
+gem 'autoprefixer-rails'
+
+
