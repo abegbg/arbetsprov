@@ -1,10 +1,8 @@
 <ol>
 <% @orderrows.each do |orderrow| %>
 	<li>
-	<!-- Jag får inte till det med att skicka på ett korrekt sätt. -->
- 		<!-- < %= form_for(orderrow, format: :json, html: {class: :orderrow_form}, :url => {:controller => 'orderrows', :action => 'update_quantity'}) do |o| %> -->
 		<p>
-	 		<% if !@order.sent? %>
+	 		<% if !@order.sent? && current_user %>
 		 		<%= form_for(orderrow, remote: true, format: :json, html: {class: :orderrow_form}, url: order_orderrow_path(@order, orderrow)) do |o| %>
 						<%= orderrow.id %> - <%= orderrow.order.name %> - <%= orderrow.product.name %>
 						<%= o.text_field :quantity, autofocus: true, size: 3 %> st
