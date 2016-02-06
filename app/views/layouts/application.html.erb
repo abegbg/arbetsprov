@@ -24,6 +24,9 @@
 </head>
 <body>
 
+<header>
+	<%= render 'layouts/menu' %>
+</header>
 
 
 	<p id="notice" class="flash notice" style="display:none;"><%= notice %>test</p>
@@ -40,15 +43,18 @@
 		</p>
 	<% end %>
 
-
-
-	<%= render 'layouts/menu' %>
-
 	<div class="container">
 		<%= yield %>
 	</div>
 
-	<%= render 'layouts/footer' %>
+<!-- 	Kanske visa cart i en aside
+	<aside>
+		< %= render 'carts/_något' %>	
+	</aside> -->
+
+	<footer id="footer">
+		<%= render 'layouts/footer' %>
+	</footer>
 
 </body>
 </html>

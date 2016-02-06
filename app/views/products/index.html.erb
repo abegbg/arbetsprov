@@ -1,22 +1,21 @@
-<h1><%= @products.size %> Products</h1>
+<section>
+	<% @products.each do |product| %>
+		<article class="product">
+			<header>
+				<%= image_for_thumb(product)  %>
+				<h2><%= link_to product.name, product %></h2>
+			</header>
+			<p>
+				<%= product.description %>
+			</p>
+			<p>
+				<%= number_to_currency(product.price, :locale => :sv) %>
+			</p>
+			<%= format_stock(product) %> 
+			<p>
+				Bild: <%= product.image %>
+			</p>
+		</article>
+	<% end %>
 
-
-<% @products.each do |product| %>
-	<article class="product">
-		<header>
-			<%= image_for_thumb(product)  %>
-			<h2><%= link_to product.name, product %></h2>
-		</header>
-		<p>
-			<%= product.description %>
-		</p>
-		<p>
-			<%= number_to_currency(product.price, :locale => :sv) %>
-		</p>
-		<%= format_stock(product) %> 
-		<p>
-			Bild: <%= product.image %>
-		</p>
-	</article>
-<% end %>
-
+</section>
