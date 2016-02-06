@@ -3,11 +3,20 @@
 		<li>
 			<%= link_to "Alla produkter", products_path %>
 		</li>
+		<li>
+			<%= link_to "Att beställa", products_path %>
+		</li>
+		<li>
+			<%= link_to "Om oss", products_path %>
+		</li>
+
+
 		<% if @cart %>
 			<li>
 				<%= link_to "Varukorg", @cart %>
 			</li>
 		<% end %>
+
 		<% if current_user %>
 			<li>
 				<%= link_to "Skapa ny produkt", new_product_path %>

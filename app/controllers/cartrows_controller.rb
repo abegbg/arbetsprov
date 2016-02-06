@@ -3,22 +3,12 @@ class CartrowsController < ApplicationController
 	before_action :set_product, only: [:new, :create]
 
 	def index
-	#	if cookies[:cart] BAPP
-			get_cart_from_cookie
-#			@cart_id = cookies[:cart]
-#			@cart = Cart.find_by id: @cart_id
-			get_cartrows_from_cart(@cart)
-	#	end
+		get_cart_from_cookie
+		get_cartrows_from_cart(@cart)
 	end
 
-	#Behövs denna? Tror inte det. BAPP 
-	# def new
-	# 	@cartrow = @product.cartrows.new
-	# end
 
 	def create
-		puts("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------") 
-
 		get_cart_from_cookie
 		@cartrow = @cart.cartrows.new(cartrow_params)
 		@cartrow.product_id = @product.id
@@ -37,10 +27,10 @@ class CartrowsController < ApplicationController
 
 		respond_to do |format|
 			if @cartrow.save
-				format.html { redirect_to @product, notice: 'Produkten är tillagd i varukorgen.' }
+#				format.html { redirect_to @product, notice: 'Produkten är tillagd i varukorgen.' }
 			  format.json { render json: @product }
 			else
-				format.html { render action: 'edit' }
+#				format.html { render action: 'edit' }
 				format.json { render json: @cartrow.errors.full_messages, status: :unprocessable_entity }
 			end
 		end

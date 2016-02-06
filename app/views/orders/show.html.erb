@@ -71,5 +71,9 @@
 <h2>Orderrader på denna order</h2>
 <%= render 'orderrows/rows_in_order' %>
 
-<%= link_to 'Uppdatera order', edit_order_path(@order), class: "button" %>
-<%= link_to 'Skicka order', sendorder_path(@order), class: "button" %>
+<% if current_user %>
+  <%= link_to 'Uppdatera order', edit_order_path(@order), class: "button" %>
+<% end %>
+<% if !@order.persisted? %>
+  <%= link_to 'Skicka order', sendorder_path(@order), class: "button" %>
+<% end %>
