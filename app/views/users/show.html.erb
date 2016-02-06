@@ -1,16 +1,17 @@
-
 <article id="user">
 	<header>
-		<p><%= @user.name %></p>
-		<p><%= @user.email %></p>
+		<h2><%= @user.name %></h2>
 	</header>
+	<p><%= @user.email %></p>
+	<p>Skapad: <%= @user.created_at.strftime("%Y-%m-%d %T") %></p>
+	<p>Ändrad: <%= @user.updated_at.strftime("%Y-%m-%d %T") %></p>
 	<footer>
 		<nav>
-			<%= link_to "Edit adminkonto", edit_user_path(@user), class: "button" %>
+			<%= link_to "Edit adminkonto", edit_user_path(@user), class: "btn btn-primary" %>
 			<%= link_to "Tag bort användaren", @user,
 									method: :delete,
 									data: { confirm: 'Är du säker på att du vill ta bort användaren'},
-									class: 'button' %>
+									class: 'btn btn-primary' %>
 		</nav>
 	</footer>
 </article>

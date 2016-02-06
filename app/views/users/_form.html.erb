@@ -25,9 +25,9 @@
     </ol>
     <p>
       <% if @user.new_record? %>
-        <%= f.submit "Skapa användare" %>
+        <%= f.submit "Skapa användare", class: "btn btn-primary" %>
       <% else %>
-        <%= f.submit "Ändra användare" %>
+        <%= f.submit "Ändra användare", class: "btn btn-primary" %>
       <% end %>
     </p>
   </fieldset>
