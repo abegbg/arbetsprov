@@ -20,9 +20,9 @@ module ProductsHelper
 
 	def image_for_full(product)
 		if product.image.blank?
-			image_tag "products/fullsize/placeholder.png"
+			image_tag("products/fullsize/placeholder.png", class: "col-xs-6")
 		else
-			image_tag("products/fullsize/" + product.image, size: "500", alt: product.name)
+			image_tag("products/fullsize/" + product.image, size: "500x500", alt: product.name, class: "col-xs-6")
 		end
 	end
 

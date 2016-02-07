@@ -4,7 +4,14 @@
 
 @import "colors";
 
-article.product_show {
+div.product_show {
+  margin: 0 0 10px 500;
+  padding: 10px 20px 10px 20px;
+  background-color: $product_show-color;
+  border: 0;
+  box-shadow: #aaa 0 0 8px;
+  float: right;
+
 	img {
 		float: left;
 		margin: 0 20px;
@@ -14,6 +21,15 @@ article.product_show {
 	h1 {
 		float: none;
 	}
+}
+
+div.admin {
+  margin: 20px 0 10px 0;
+  padding: 10px 20px 10px 20px;
+  background-color: $admin_product_show-color;
+  border: 0;
+  box-shadow: #aaa 0 0 8px;
+  float: right;
 }
 
 .flash {

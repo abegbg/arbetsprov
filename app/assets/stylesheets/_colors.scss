@@ -7,6 +7,10 @@ $negative-response: #f0f0f0;
 $primary-background-color: #F5F5F5;
 $secondary-background-color: #237CBE;
 $fieldset-color: lighten($secondary-background-color, 50%);
+$product_show-color: lighten($secondary-background-color, 50%);
+$admin_product_show-color: darken($product_show-color, 10%);
+
+
 
 $button-color-admin: #72b1d2;
 
