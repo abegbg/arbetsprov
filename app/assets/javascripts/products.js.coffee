@@ -5,7 +5,6 @@
 
 $(document).ready ->
 
-  #Why oooh why does it enter here when I am doing stuff with orderrows.
   $("form.product_form").on("ajax:success", (e, data, status, xhr) ->
 #  $(document).bind "ajaxSuccess", "form.product_form", (event, xhr, settings) ->
     $product_form = $(event.data)
@@ -22,7 +21,7 @@ $(document).ready ->
       $error_container.hide()
     )
 
-  $("form.product_form").on("ajax:error", (e, data, status, xhr) ->
+  $("form.product_form").on("ajax:error", (event, xhr, status, error) ->
 #  $(document).bind "ajaxError", "form.product_form", (event, jqxhr, settings, exception) ->
     $product_form = $(event.data)
     $flash = $(".flash")
@@ -30,11 +29,15 @@ $(document).ready ->
     $notice = $("#notice")
     $notice.show() if $notice.is("hidden")
     $notice.replaceWith("<p id=notice class='flash alert'>Produkten kunde inte sparas. Se felmeddelande nedan.</p>")
+    $error_container = $("#error_explanation")
+    $error_container_ul = $("ul.error")
     if $("li.error", $error_container_ul).length
       $("li.error", $error_container_ul).remove()
       $error_container.hide()
-    $error_container_ul = $("ul", $error_container)
     $error_container.show()  if $error_container.is(":hidden")
-    $.each jqxhr.responseJSON, (index, message) ->
+    $.each xhr.responseJSON, (index, message) ->
       $("<li class=error>").html(message).appendTo $error_container_ul
     )
+
+
+

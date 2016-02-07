@@ -2,14 +2,15 @@
   <section id="errors">
     <header>
       <h2>
-        <%= object.class.name.titleize.downcase %> kunde inte sparas.
-        <%= object.class.name.constantize %>
+        <%= object.class.name.titleize.downcase %> kunde inte sparas. <!-- Vet inte hur man skall få rätt namn på denna. -->
       </h2>
       <h3>
         Justera följande fel:
       </h3>
     </header>
-    <ul>
+    <ul class="error">
+      <li class="error">BAPP</li>
+
       <% if object %>
         <% object.errors.full_messages.each do |message| %>
           <li class="error"><%= message %></li>
@@ -20,7 +21,7 @@
 </div>
 
 
-<div id="response_explanation" class="flash notice" style='display:none;'>
+<div id="response_explanation" class="flash notice" style='display:none;'>bapp
   <header>
     <h2>
       <%= object.class.name.titleize.downcase %> har sparats. 

@@ -2,7 +2,8 @@ $primary-text-color: #444;
 $flash-notice-color: #DBFFDD;
 $flash-alert-color:  #FFE1DE;
 $positive-response: green;
-$negative-response: #f0f0f0;
+$negative-response: #e67b7b;
+$negative-response-block: lighten($negative-response, 30%);
 
 $primary-background-color: #F5F5F5;
 $secondary-background-color: #237CBE;
