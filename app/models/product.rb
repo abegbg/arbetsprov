@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
 	validates :stock, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
 	def stock_low?
-		stock < 10
+		stock < 5
 	end	
 
 	def no_stock?
@@ -19,6 +19,5 @@ class Product < ActiveRecord::Base
 		self.stock = self.stock - quantity
 		self.save
 	end
-
 
 end

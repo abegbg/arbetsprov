@@ -1,20 +1,19 @@
 <section>
 	<% @products.each do |product| %>
-		<article class="product">
-			<header>
-				<%= image_for_thumb(product)  %>
-				<h2><%= link_to product.name, product %></h2>
-			</header>
-			<p>
-				<%= product.description %>
-			</p>
-			<p>
-				<%= number_to_currency(product.price, :locale => :sv) %>
-			</p>
-			<%= format_stock(product) %> 
-			<p>
-				Bild: <%= product.image %>
-			</p>
+		<article class="product col-xs-4">
+			<%= link_to product, class: "product" do %>
+				<header>
+					<%= image_for_thumb (product) %>
+					<h2><%= product.name %></h2>
+				</header>
+				<p>
+					<%= truncate(product.description, length: 45, separator: ' ' ) %>
+				</p>
+				<p>
+					<%= number_to_currency(product.price, :locale => :sv) %>
+				</p>
+				<%= format_stock(product) %> 
+			<% end %>
 		</article>
 	<% end %>
 

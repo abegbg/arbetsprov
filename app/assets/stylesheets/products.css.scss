@@ -41,3 +41,12 @@ input[type="submit"]  {
   box-shadow:    0px;
   border: 1px solid light-grey;
 }
+
+a.product {
+  text-decoration: none;
+  background-color: red;
+}
+
+.low_stock {
+  color: red;
+}

@@ -14,7 +14,7 @@ module ProductsHelper
 		if product.image.blank?
 			image_tag "products/thumbs/placeholder.png"
 		else
-			image_tag "products/thumbs/" + product.image
+			image_tag("products/thumbs/" + product.image, size: "100x100", alt: product.name)
 		end
 	end
 
@@ -22,7 +22,7 @@ module ProductsHelper
 		if product.image.blank?
 			image_tag "products/fullsize/placeholder.png"
 		else
-			image_tag "products/fullsize/" + product.image
+			image_tag("products/fullsize/" + product.image, size: "500", alt: product.name)
 		end
 	end
 
