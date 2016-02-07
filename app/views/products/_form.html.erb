@@ -1,28 +1,28 @@
 <%= form_for(@product, remote: true, format: :json, html: {class: :product_form}) do |f| %>
+	<fieldset>
+		<%= render 'shared/errors', object: @product %>
 
-	<%= render 'shared/errors', object: @product %>
+		<p>
+			<%= f.label :name, "Namn" %> <br />
+			<%= f.text_field :name, autofocus: true %>
+		</p>
+		<p>
+			<%= f.label :description, "Beskrivning" %> <br />
+			<%= f.text_area :description %>
+		</p>
+		<p>
+			<%= f.label :price, "Pris" %> <br />
+			<%= f.text_field :price %>
+		</p>
+		<p>
+			<%= f.label :stock, "Lagersaldo" %> <br />
+			<%= f.text_field :stock %>
+		</p>
+		<p>
+			<%= f.label :image, "Bild" %> <br />
+			<%= f.text_field :image %>
+		</p>
 
-	<p>
-		<%= f.label :name, "Namn" %> <br />
-		<%= f.text_field :name, autofocus: true %>
-	</p>
-	<p>
-		<%= f.label :description, "Beskrivning" %> <br />
-		<%= f.text_area :description %>
-	</p>
-	<p>
-		<%= f.label :price, "Pris" %> <br />
-		<%= f.text_field :price %>
-	</p>
-	<p>
-		<%= f.label :stock, "Lagersaldo" %> <br />
-		<%= f.text_field :stock %>
-	</p>
-	<p>
-		<%= f.label :image, "Bild" %> <br />
-		<%= f.text_field :image %>
-	</p>
-
-	<%= f.submit %> | <%= link_to "Klar med produkten", products_path%>
-
+		<%= f.submit class: "btn btn-primary" %> <%= link_to "Klar med produkten", products_path, class: "btn btn-primary"%>
+	</fieldset>
 <% end %>
