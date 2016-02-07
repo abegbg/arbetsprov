@@ -15,6 +15,10 @@ sv:
         price: Pris
         description: Beskrivning
         stock: Lagersaldo
+  will_paginate:
+    previous_label: "Föregående sida"
+    next_label: "Nästa sida"
+    page_gap: "BAPP"
   date:
     abbr_day_names:
     - sön

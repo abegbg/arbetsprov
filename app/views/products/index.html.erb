@@ -1,4 +1,4 @@
-<section>
+<section class="products row">
 	<% @products.each do |product| %>
 		<article class="product col-xs-4">
 			<%= link_to product, class: "product" do %>
@@ -16,5 +16,9 @@
 			<% end %>
 		</article>
 	<% end %>
-
 </section>
+<div class="row">
+	<div class="col-xs-12 paginate">
+		<%= will_paginate @products %>
+	</div>
+</div>

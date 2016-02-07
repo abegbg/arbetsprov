@@ -43,4 +43,5 @@ gem 'bootstrap-sass', '~> 3.3.1'
 #gem 'sass-rails', github: 'rails/sass-rails'
 gem 'autoprefixer-rails'
 
-
+#https://github.com/mislav/will_paginate/wiki/Installation
+gem 'will_paginate', '~> 3.0.5'

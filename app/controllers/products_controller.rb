@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 	before_action :require_signin, except: [:index, :show]
 
 	def index
-		@products = Product.all
+		@products = Product.paginate(:page => params[:page], :per_page => 6)
+#		@products = Product.all
 	end
 
 
