@@ -24,13 +24,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="admin col-xs-6">
-		<% if current_user %>
+	<% if current_user %>
+		<div class="admin col-xs-6">
 			<%= link_to "Uppdatera produkt", edit_product_path(@product) %>
 			<br />
 			<%= link_to "Tag bort produkt", product_path(@product), method: :delete, data: {confirm: 'Är du säker?'} %>
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 
 </article>
 

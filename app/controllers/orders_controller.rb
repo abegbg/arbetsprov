@@ -48,7 +48,8 @@ class OrdersController < ApplicationController
             format.html { redirect_to @order, notice: 'Order skapad.' }
           else
             # Måste komma vidare utan att gå till ordern. Nu kan man skriva vilket ordernummer som helst.
-            #Inte bästa sättet att lösa det känns det som.
+            # Inte bästa sättet att lösa det känns det som.
+            # FÅr ingen yield eller resten när jag gör så här.
             format.html { render @order, notice: 'Order skapad.' }  
           end
         else
