@@ -7,27 +7,13 @@ $negative-response-block: lighten($negative-response, 30%);
 
 $cart-proced-color: #44a948;
 
-$primary-background-color: #F5F5F5;
-$secondary-background-color: #237CBE;
+$primary-background-color: #F5F5F5; //menu
+$secondary-background-color: #237CBE; //containers
 $fieldset-color: lighten($secondary-background-color, 50%);
 $product_show-color: lighten($secondary-background-color, 50%);
 $admin_product_show-color: darken($product_show-color, 10%);
 
-
-
 $button-color-admin: #72b1d2;
 
 $subdued-color: darken($primary-background-color, 20%);
-
-
-
-
-/*
-$secondary-text-color: #777;
-$primary-link-color: #2E6AA0;
-$secondary-link-color: #FFF;
-$errors-background-color: #FFC;
-$errors-text-color: #DC3D3D;
-$accent-color: #FAFBFF;
-*/
 
