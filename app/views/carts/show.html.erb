@@ -1,10 +1,15 @@
-<h1>Cart Rows Index</h1>
+<h1>Varukorg</h1>
 
-<%= render 'cartrows/cartrows' %>
-
-<div>
-	<% if @cart %>
-		<%= link_to "Töm varukorgen", cart_path(@cart), :controller => 'carts', :method => :delete, :id => "empty_cart" %>
-		<%= link_to "Gå till kassan", new_order_path, :controller => 'orders', :id => "to_checkout" %>
-	<% end %>
+<div class="row">
+	<div class="cart_show col-md-8">
+			<%= render 'cartrows/cartrows' %>
+			<div class="row">
+				<div class="col-md-6">
+					<% if @cart %>
+						<%= link_to "Töm varukorgen", cart_path(@cart), :controller => 'carts', :method => :delete, :id => "empty_cart", class: "btn btn-primary" %>
+						<%= link_to "Gå till kassan", new_order_path, :controller => 'orders', :id => "to_checkout", class: "btn btn-primary"%>
+					<% end %>
+				</div>
+			</div>
+	</div>
 </div>

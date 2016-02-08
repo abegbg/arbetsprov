@@ -20,4 +20,8 @@ class Product < ActiveRecord::Base
 		self.save
 	end
 
+	def enough_stock?(ordered_quantity)
+		ordered_quantity < self.stock
+	end
+
 end

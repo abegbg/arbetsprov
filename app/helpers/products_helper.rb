@@ -2,19 +2,19 @@ module ProductsHelper
 
 	def format_stock(product)
 		if product.no_stock?
-			content_tag(:p, "Slut i lager!", class: "low_stock")
+			content_tag(:span, "Slut i lager!", class: "low_stock")
 		elsif product.stock_low?
-			content_tag(:p, product.stock.to_s + " st i lager", class: "low_stock")
+			content_tag(:span, product.stock.to_s + " st i lager", class: "low_stock")
 		else
-			content_tag(:p, product.stock.to_s + " st i lager", class: "normal_stock")
+			content_tag(:span, product.stock.to_s + " st i lager", class: "normal_stock")
 		end
 	end
 
-	def image_for_thumb(product)
+	def image_for_thumb(product, size_in)
 		if product.image.blank?
-			image_tag "products/thumbs/placeholder.png"
+			image_tag("products/thumbs/placeholder.png", size: size_in.to_s)
 		else
-			image_tag("products/thumbs/" + product.image, size: "100x100", alt: product.name)
+			image_tag("products/thumbs/" + product.image, size: size_in.to_s, alt: product.name)
 		end
 	end
 

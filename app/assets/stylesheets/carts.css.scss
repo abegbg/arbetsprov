@@ -2,3 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "colors";
+
+div.cart_show {
+  margin: 0 0 10px 500;
+  padding: 15px 20px 30px 30px;
+  background-color: $product_show-color;
+  border: 0;
+  box-shadow: #aaa 0 0 8px;
+  float: left;
+
+	h1 {
+		float: none;
+	}
+}
+
+#empty_cart  {
+}
+
+#to_checkout  {
+  background-color: $cart-proced-color;
+}
+
+div.cart {
+	img {
+		float: left;
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+}
+	
+
+div.cart_align-right {
+	text-align: right;	
+}

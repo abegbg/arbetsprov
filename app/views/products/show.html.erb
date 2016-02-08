@@ -6,7 +6,6 @@
 				<header>
 					<h2><%= @product.name %></h2>
 				</header>
-
 				<p>
 					<%= @product.description %>
 				</p>
@@ -14,9 +13,6 @@
 					<%= number_to_currency(@product.price, :locale => :sv) %>
 				</p>
 				<%= format_stock(@product) %> 
-				<p>
-					Bild: <%= @product.image %>
-				</p>
 				<%= form_for ([@cart, @cartrow]), remote: true, html: {class: :cart_form} do |f| %>
 					<p>
 						<%= f.label :quantity, "Antal" %> <br />

@@ -1,9 +1,32 @@
-<div>
+<div class="row">
 	<% @cartrows.each do |cartrow| %>
-		<p><%= cartrow.product.name %></p>
-		<p><%= cartrow.quantity %> i beställningen</p>
-		<p><%= cartrow.product.stock %> i lager</p>
-		<p><%= cartrow.cart_id %></p>
-		<hr />
+		<div class="cart row">
+			<div class="col-xs-1">
+				<%= image_for_thumb(cartrow.product, 50) %> 
+			</div>
+			<div class="col-xs-2">
+				<p><%= cartrow.product.name %></p>
+			</div>
+			<div class="col-xs-3 cart_align-right">
+				<p><%= cartrow.quantity %>st x <%= number_to_currency(cartrow.product.price, :locale => :sv) %></p>
+			</div>
+			<div class="col-xs-2 cart_align-right">
+				<p><%= number_to_currency(cartrow.product.price * cartrow.quantity , :locale => :sv) %></p>
+			</div>
+			<div class="col-xs-3">
+				<% if !cartrow.product.enough_stock?(cartrow.quantity) %>
+					<p>Vi har endast <%= format_stock(cartrow.product) %></p>
+				<% end %>
+			</div>
+		</div>
 	<% end %>
+	<hr />
+	<div class="row">
+		<div class="col-xs-6 cart_align-right">Fraktkostnad:</div>
+		<div class="col-xs-2 cart_align-right"><%= number_to_currency(0 , :locale => :sv) %></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 cart_align-right">Summa:</div>
+		<div class="col-xs-2 cart_align-right"><%= number_to_currency(@cart.sum , :locale => :sv) %></div>
+	</div>
 </div>
