@@ -1,5 +1,5 @@
 <ol>
-<% @orderrows.each do |orderrow| %>
+<% @order.orderrows.each do |orderrow| %>
 	<li>
 		<p>
 	 		<% if !@order.sent? && current_user %>

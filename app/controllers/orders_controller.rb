@@ -10,8 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    @orderrows = @order.orderrows
+    @order = Order.includes(orderrows: [:product]).where(id: params[:id]).first
   end
 
   def new
