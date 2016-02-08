@@ -24,32 +24,62 @@
 </head>
 <body>
 
-<header>
-	<%= render 'layouts/menu' %>
-</header>
+	<% if current_user %>
+		<header>
+			<%= render 'layouts/menu_backoffice' %>
+		</header>
 
 
-	<p id="notice" class="flash notice" style="display:none;"><%= notice %>test</p>
+		<p id="notice" class="flash notice" style="display:none;"><%= notice %>test</p>
 
-	<% if flash[:notice] %>
-		<p class="flash notice">
-			<%= flash[:notice] %>
-		</p>
+		<% if flash[:notice] %>
+			<p class="flash notice">
+				<%= flash[:notice] %>
+			</p>
+		<% end %>
+
+		<% if flash[:alert] %>
+			<p class="flash alert">
+				<%= flash[:alert] %>
+			</p>
+		<% end %>
+
+		<div class="container">
+			<%= yield %>
+		</div>
+
+		<footer id="footer-main">
+			<%= render 'layouts/footer' %>
+		</footer>
+
+	<% else %>
+		<header>
+			<%= render 'layouts/menu' %>
+		</header>
+
+
+		<p id="notice" class="flash notice" style="display:none;"><%= notice %>test</p>
+
+		<% if flash[:notice] %>
+			<p class="flash notice">
+				<%= flash[:notice] %>
+			</p>
+		<% end %>
+
+		<% if flash[:alert] %>
+			<p class="flash alert">
+				<%= flash[:alert] %>
+			</p>
+		<% end %>
+
+		<div class="container">
+			<%= yield %>
+		</div>
+
+		<footer id="footer-main">
+			<%= render 'layouts/footer' %>
+		</footer>
 	<% end %>
-
-	<% if flash[:alert] %>
-		<p class="flash alert">
-			<%= flash[:alert] %>
-		</p>
-	<% end %>
-
-	<div class="container">
-		<%= yield %>
-	</div>
-
-	<footer id="footer-main">
-		<%= render 'layouts/footer' %>
-	</footer>
 
 </body>
 </html>
