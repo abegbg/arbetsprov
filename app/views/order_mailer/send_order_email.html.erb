@@ -2,9 +2,22 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css" media="screen">
+      h1 { color: #f00; }
+      ul { list-style: none; }
+    </style>
   </head>
   <body>
-    <h1>Tack för din order, <%= @order.name %>!</h1>
-    <p>Tack för din order. Här kan vi lista allt om ordern.</p>
+    <h1>Tack för din beställning, <%= @order.name %>!</h1>
+    <p>Tack för din order.</p>
+    <ul>
+	    <% @order.orderrows.each do |orderrow| %>
+	    	<li><%= orderrow.quantity  %> st
+	    	<%= orderrow.product.name %>
+	    	<%= number_to_currency(orderrow.product.price, :locale => :sv) %></li>
+	    <% end %>
+    </ul>
+
+    <p>Mvh Affären</p>
   </body>
 </html>

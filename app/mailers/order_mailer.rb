@@ -6,7 +6,9 @@ class OrderMailer < ActionMailer::Base
 
   	@order = order
     mail( :to => @order.email,
-    :subject => 'Tack för din beställning' )
+    :subject => 'Tack för din beställning',
+		:content_type => "text/html"
+    )
   end
 
 #Test
