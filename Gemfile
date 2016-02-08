@@ -45,3 +45,5 @@ gem 'autoprefixer-rails'
 
 #https://github.com/mislav/will_paginate/wiki/Installation
 gem 'will_paginate', '~> 3.0.5'
+
+gem 'pg', '~> 0.18.2'
