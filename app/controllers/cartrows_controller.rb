@@ -1,5 +1,7 @@
 class CartrowsController < ApplicationController
 	include CartrowsHelper
+	include CartsHelper
+
 	before_action :set_product, only: [:new, :create]
 
 	def index

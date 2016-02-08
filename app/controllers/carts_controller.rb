@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
 	include CartrowsHelper
+	include CartsHelper
 
 	def new
 		@cart = Cart.new
@@ -7,7 +8,7 @@ class CartsController < ApplicationController
 
 
 	def show
-		get_cart_from_cookie #BAPP KAN JAG LÄGGA DE HÄR I MODELLEN INTE I EN HELPER?
+		get_cart_from_cookie
 		@cartrows = get_cartrows_from_cart(@cart)
 	end
 

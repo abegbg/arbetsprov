@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-	include CartrowsHelper
+	include CartsHelper
 	before_action :require_signin, except: [:index, :show]
 
 	def index
