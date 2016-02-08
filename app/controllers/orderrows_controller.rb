@@ -13,8 +13,8 @@ class OrderrowsController < ApplicationController
 
 
 	def update
-		@orderrow = Orderrow.includes(:product).where(id: params[:id]).first
-		@product = @orderrow.product #Product.find(@orderrow.product_id)
+		@orderrow = Orderrow.includes(:product).where(id: params[:id]).first #Känns inte som om den ger mig något egentligen.
+		@product = @orderrow.product 
 		@order = @orderrow.order
 
 		old_quantity = @orderrow.quantity.to_i
