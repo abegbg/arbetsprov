@@ -13,24 +13,25 @@ class OrderrowsController < ApplicationController
 
 
 	def update
-		@orderrow = Orderrow.includes(:product).where(id: params[:id]).first #Känns inte som om den ger mig något egentligen.
+		@orderrow = Orderrow.includes(:product).where(id: params[:id]).first #Känns inte som om den ger mig något egentligen. Kan bara ha en product per rad.
 		@product = @orderrow.product 
 		@order = @orderrow.order
 
-		old_quantity = @orderrow.quantity.to_i
-		new_quantity = params[:orderrow][:quantity].to_i
-		difference = old_quantity - new_quantity
+		if is_number?(params[:orderrow][:quantity])
+			old_quantity = @orderrow.quantity.to_i
+			new_quantity = params[:orderrow][:quantity].to_i
+			difference = old_quantity - new_quantity
 
-		@orderrow.quantity = new_quantity
-		@product.stock = (@product.stock + difference).to_i
-
+			@orderrow.quantity = new_quantity
+			@product.stock = (@product.stock + difference).to_i
+		end
 		#Man skulle kunna ha en koll på om den sätts till noll att man tar bort raden,
 		#men man kan diskutera om man inte skall visa borttagna rader för historikens skull.
 		#Hart valt att låta raden vara.
 		
 		#Ändra antalet i orderraden.
 		respond_to do |format|
-			if @product.save && @orderrow.save
+			if is_number?(params[:orderrow][:quantity]) && @product.save && @orderrow.save 
 #				format.html { redirect_to @order, notice: 'Orderraden är uppdaterad.' }
 			  format.json { render json: @order, notice: 'Orderraden är uppdaterad.' }
 			else
@@ -50,6 +51,9 @@ class OrderrowsController < ApplicationController
 
 private
 
+	def is_number? string
+		true if Float(string) rescue false
+	end
 
 	def orderrow_params
 		params.require(:orderrow).
