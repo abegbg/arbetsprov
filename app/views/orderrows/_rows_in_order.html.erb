@@ -1,17 +1,35 @@
-<ol>
-<% @orderrows.each do |orderrow| %>
-	<li>
-		<p>
-	 		<% if !@order.sent? && current_user %>
+<div class="orderrows_container">
+	<% @orderrows.each do |orderrow| %>
+		<div class="cart row">
+			<div class="col-xs-1">
+				<%= image_for_thumb(orderrow.product, 50) %> 
+			</div>
+			<div class="col-xs-2">
+				<p><%= orderrow.product.name %></p>
+			</div>
+			<div class="col-xs-3 cart_align-right">
 		 		<%= form_for(orderrow, remote: true, format: :json, html: {class: :orderrow_form}, url: order_orderrow_path(@order, orderrow)) do |o| %>
-						<%= orderrow.id %> - <%= orderrow.order.name %> - <%= orderrow.product.name %>
-						<%= o.text_field :quantity, autofocus: true, size: 3 %> st
+						<%= o.text_field :quantity, autofocus: true, size: 3 %> st (räknar inte om summor just nu BAPP)
 				<% end %>
-			<% else %>
-					<%= orderrow.id %> - <%= orderrow.order.name %> - <%= orderrow.product.name %>
-					<%= orderrow.quantity %> st
-			<% end %>
-		</p>
-	</li>
-<% end %>
-</ol>
+				<p><%= orderrow.quantity %>st x <%= number_to_currency(orderrow.product.price, :locale => :sv) %></p>
+			</div>
+			<div class="col-xs-2 cart_align-right">
+				<p><%= number_to_currency(orderrow.product.price * orderrow.quantity , :locale => :sv) %></p>
+			</div>
+			<div class="col-xs-3">
+				<% if !orderrow.product.enough_stock?(orderrow.quantity) %>
+					<p>Vi har endast <%= format_stock(orderrow.product) %></p>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	<hr />
+	<div class="row">
+		<div class="col-xs-6 cart_align-right">Fraktkostnad:</div>
+		<div class="col-xs-2 cart_align-right"><%= number_to_currency(0 , :locale => :sv) %></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 cart_align-right">Summa:</div>
+		<div class="col-xs-2 cart_align-right"><%= number_to_currency(@order.sum , :locale => :sv) %></div>
+	</div>
+</div>

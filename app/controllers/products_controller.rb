@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
 
 	def index
 		@products = Product.paginate(:page => params[:page], :per_page => 6)
+		get_cart_from_cookie
 #		@products = Product.all
 	end
 

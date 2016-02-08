@@ -1,3 +1,41 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "colors";
+
+.cart_show_order {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+div.order_show {
+  margin: 0 0 10px 500;
+  padding: 10px 20px 10px 20px;
+  background-color: $product_show-color;
+  border: 0;
+  box-shadow: #aaa 0 0 8px;
+
+	img {
+		float: left;
+		margin: 0 20px;
+		width: 500px;
+	}
+
+	h1 {
+		float: none;
+	}
+}
+
+div.orderrows_container {
+  margin: 0 0 10px 500;
+  padding: 10px 20px 10px 20px;
+  background-color: $product_show-color;
+  border: 0;
+  box-shadow: #aaa 0 0 8px;
+	
+}
+
+div.space-top {
+	margin-top: 20px;
+}

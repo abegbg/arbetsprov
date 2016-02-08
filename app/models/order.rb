@@ -12,5 +12,12 @@ class Order < ActiveRecord::Base
   	status == 'Skickad'
   end
 
+  def sum
+		sum = 0
+		orderrows.each do |orderrow|
+			sum = sum + (orderrow.product.price * orderrow.quantity)
+		end
+		return sum
 
+  end
 end

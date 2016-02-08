@@ -33,7 +33,6 @@ class OrdersController < ApplicationController
     get_cartrows_from_cart(@cart)
     cart_to_orderrows(@cartrows, @order)
 
-
     respond_to do |format|
       if valid_order?(@order)
         if @order.save

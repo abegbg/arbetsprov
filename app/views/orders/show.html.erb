@@ -1,79 +1,94 @@
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+<h1>Tack för din beställning!</h1>
+<div class="order_show">
+  <div class="row">
+    <div class="col-xs-6">
+      <p>
+        <label>Namn:</label><br />
+        <%= @order.name %>
+      </p>
 
-<p>
-  <strong>Adress:</strong>
-  <%= @order.adress %>
-</p>
+      <p>
+        <label>Adress:</label><br />
+        <%= @order.adress %>
+      </p>
 
-<p>
-  <strong>Co:</strong>
-  <%= @order.co %>
-</p>
+      <p>
+        <label>Co:</label><br />
+        <%= @order.co %>
+      </p>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @order.zipcode %>
-</p>
+      <p>
+        <label>Postnummer:</label><br />
+        <%= @order.zipcode %>
+      </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @order.city %>
-</p>
+      <p>
+        <label>Stad:</label><br />
+        <%= @order.city %>
+      </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @order.country %>
-</p>
+      <p>
+        <label>Land:</label><br />
+        <%= @order.country %>
+      </p>
 
-<p>
-  <strong>D adress:</strong>
-  <%= @order.d_adress %>
-</p>
+      <p>
+        <label>Email:</label><br />
+        <%= @order.email %>
+      </p>
 
-<p>
-  <strong>D co:</strong>
-  <%= @order.d_co %>
-</p>
+      <p>
+        <label>Mobil:</label><br />
+        <%= @order.mobile %>
+      </p>
 
-<p>
-  <strong>D city:</strong>
-  <%= @order.d_city %>
-</p>
+    </div>
+    <div class="col-xs-6">
+      <p>
+        <label>Adress:</label><br />
+        <%= @order.d_adress %>
+      </p>
 
-<p>
-  <strong>D country:</strong>
-  <%= @order.d_country %>
-</p>
+      <p>
+        <label>Co:</label><br />
+        <%= @order.d_co %>
+      </p>
 
-<p>
-  <strong>D zipcode:</strong>
-  <%= @order.d_zipcode %>
-</p>
+      <p>
+        <label>Stad:</label><br />
+        <%= @order.d_city %>
+      </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @order.email %>
-</p>
+      <p>
+        <label>Postnummer:</label><br />
+        <%= @order.d_zipcode %>
+      </p>
 
-<p>
-  <strong>Mobile:</strong>
-  <%= @order.mobile %>
-</p>
+      <p>
+        <label>Land:</label><br />
+        <%= @order.d_country %>
+      </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
-
-<h2>Orderrader på denna order</h2>
-<%= render 'orderrows/rows_in_order' %>
-
-<% if current_user %>
-  <%= link_to 'Uppdatera order', edit_order_path(@order), class: "button" %>
-<% end %>
-<% if !@order.persisted? %>
-  <%= link_to 'Skicka order', sendorder_path(@order), class: "button" %>
-<% end %>
+      <p>
+        <label>Status:</label><br />
+        <%= @order.status %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-8">
+    <h2>Orderrader på denna order</h2>
+    <%= render 'orderrows/rows_in_order' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-2 space-top">
+    <% if current_user %>
+      <%= link_to 'Uppdatera order', edit_order_path(@order), class: "btn btn-primary" %>
+    <% end %>
+    <% if !@order.persisted? %>
+      <%= link_to 'Skicka order', sendorder_path(@order), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
