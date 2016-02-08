@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   include CartrowsHelper
   include OrderrowsHelper
+  include CartsHelper
+
 
   before_action :require_signin, only: [:index, :update, :destroy] #BAPP Vill ha med :show
   before_action :set_order, only: [:show, :edit, :update, :destroy]
