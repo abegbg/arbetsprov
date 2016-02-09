@@ -15,10 +15,17 @@ sv:
         price: Pris
         description: Beskrivning
         stock: Lagersaldo
+      order:
+        name: Namn
+        adress: Adress
+        zipcode: Postnummer
+        city: Stad
+        country: Land
+        email: E-mail
   will_paginate:
     previous_label: "Föregående sida"
     next_label: "Nästa sida"
-    page_gap: "BAPP"
+    page_gap: ""
   date:
     abbr_day_names:
     - sön

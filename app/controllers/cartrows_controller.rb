@@ -15,9 +15,6 @@ class CartrowsController < ApplicationController
 		@cartrow = @cart.cartrows.new(cartrow_params)
 		@cartrow.product_id = @product.id
 
-		#Skapa metod som heter merge eller något BAPP
-		#@cartrow.merge_rows(@cartrow, @cart)
-
 		#Check if product already exists in cart.
 		@cart.cartrows.each do |cartrow|
 			if (cartrow.product_id == @cartrow.product_id && cartrow.id != @cartrow.id)

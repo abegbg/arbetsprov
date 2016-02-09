@@ -13,14 +13,14 @@ class CartsController < ApplicationController
 	end
 
 	def destroy
-		#Borde man kanske lägga i en egen metod i modellen. BAPP
+		#Borde man kanske lägga i en egen metod i modellen.
 		if cookies[:cart] 
 			cart_id = cookies[:cart]
 			@cart = Cart.find_by id: cart_id
 			@cart.destroy
 			cookies.delete :cart
 		else
-			##Do nothing.
+			#Do nothing.
 		end
 		redirect_to cart_url , notice: 'Varukorgen tömd.'
 	end

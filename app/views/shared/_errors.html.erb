@@ -9,7 +9,7 @@
       </h3>
     </header>
     <ul class="error">
-      <li class="error">BAPP</li>
+      <li class="error">Något gick fel!</li>
 
       <% if object %>
         <% object.errors.full_messages.each do |message| %>
@@ -21,7 +21,7 @@
 </div>
 
 
-<div id="response_explanation" class="flash notice" style='display:none;'>bapp
+<div id="response_explanation" class="flash notice" style='display:none;'>
   <header>
     <h2>
       <%= object.class.name.titleize.downcase %> har sparats. 

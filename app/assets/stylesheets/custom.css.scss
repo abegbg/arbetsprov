@@ -31,8 +31,11 @@ div#error_explanation {
   h3 {
   	font-size: 14px;
   }
+  ul {
+    margin-top: 10px;
+  }
   ul li {
     font-size: 12px;
-    list-style: square;
+    list-style: dot;
   }
 }

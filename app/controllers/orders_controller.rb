@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #Check so that number of products in the cart is available. Should be done in the model.BAPP
+    #Check so that number of products in the cart is available.
     @order = Order.new(order_params)
 
     #Save Cartrows to Orderrows.
@@ -49,8 +49,7 @@ class OrdersController < ApplicationController
             format.html { redirect_to @order, notice: 'Order skapad.' }
           else
             # Måste komma vidare utan att gå till ordern. Nu kan man skriva vilket ordernummer som helst.
-            # Inte bästa sättet att lösa det känns det som.
-            # FÅr ingen yield eller resten när jag gör så här.
+            # Får ingen yield eller resten när jag gör så här.
             format.html { render @order, notice: 'Order skapad.' }  
           end
         else

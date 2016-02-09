@@ -9,7 +9,7 @@
 			</div>
 			<div class="col-xs-3 cart_align-right">
 		 		<%= form_for(orderrow, remote: true, format: :json, html: {class: :orderrow_form}, url: order_orderrow_path(@order, orderrow)) do |o| %>
-						<%= o.text_field :quantity, autofocus: true, size: 3 %> st (räknar inte om summor just nu BAPP)
+						<%= o.text_field :quantity, autofocus: true, size: 3 %> st (räknar inte om summor just nu)
 				<% end %>
 				<p><%= orderrow.quantity %>st x <%= number_to_currency(orderrow.product.price, :locale => :sv) %></p>
 			</div>
