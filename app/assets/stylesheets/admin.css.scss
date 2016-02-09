@@ -11,8 +11,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= stub 'application'
+ * Får inte stub att fungera som jag förstår att det borde
+ *
  *= require_self
  */
 
@@ -22,6 +22,8 @@
 
 
 @import "bootstrap_changes";
-@import "forms";
 @import "products.css.scss";
 @import "custom.css.scss";
+
+@import "admin/layout.css.scss";
+@import "admin/forms";
