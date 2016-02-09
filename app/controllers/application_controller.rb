@@ -17,7 +17,7 @@ private
 
 	def current_user #kan inte ligga i application_helper om man skall komma åt den från controllers.
 		#Bör nog inte ladda den varje gång. Blir ett databasanrop varje gång jag kontrollerar current_user.
-		User.find(session[:user_id]) if session[:user_id]
+		@current_user ||= User.find(session[:user_id]) if session[:user_id]
 	end
 
 	helper_method :current_user #Så att man kommer åt den från controllers och views.
