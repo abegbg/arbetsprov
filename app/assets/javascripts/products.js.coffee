@@ -13,7 +13,7 @@ $(document).ready ->
     $notice = $("p#notice")
     $notice.show() if $notice.is("hidden")
     $notice.replaceWith("<p id=notice class='flash notice'>Produkten är uppdaterad.</p>")
-    $error_container = $("#error_explanation", $product_form)
+    $error_container = $("#error_explanation")
     $error_container_ul = $("ul", $error_container)
     #$("<p>").html(xhr.responseJSON.title + " saved.").appendTo $product_form
     if $("li.error", $error_container_ul).length
