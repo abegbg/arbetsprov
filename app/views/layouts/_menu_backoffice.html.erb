@@ -17,6 +17,9 @@
       <ul class="nav navbar-nav">
         <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
 				<% if current_user %>
+	     		<li>
+						<%= link_to "Alla produkter", products_path %>
+					</li>
 					<li>
 						<%= link_to "Skapa ny produkt", new_product_path %>
 					</li>

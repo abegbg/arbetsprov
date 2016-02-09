@@ -3,9 +3,12 @@ class ProductsController < ApplicationController
 	before_action :require_signin, except: [:index, :show]
 
 	def index
-		@products = Product.paginate(:page => params[:page], :per_page => 6)
-		get_cart_from_cookie
-#		@products = Product.all
+		if current_user
+			@products = Product.paginate(:page => params[:page], :per_page => 10)
+		else
+			@products = Product.paginate(:page => params[:page], :per_page => 6)
+			get_cart_from_cookie
+		end
 	end
 
 

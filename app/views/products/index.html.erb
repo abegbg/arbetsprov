@@ -1,22 +1,47 @@
-<section class="products row">
-	<% @products.each do |product| %>
-		<article class="product col-xs-4">
-			<%= link_to product, class: "product" do %>
-				<header>
-					<%= image_for_thumb(product, 100) %>
-					<h2><%= product.name %></h2>
-				</header>
-				<p>
-					<%= truncate(product.description, length: 45, separator: ' ' ) %>
-				</p>
-				<p>
-					<%= number_to_currency(product.price, :locale => :sv) %>
-				</p>
-				<%= format_stock(product) %> 
-			<% end %>
-		</article>
-	<% end %>
-</section>
+<% if current_user %>
+	<section class="products">
+		<% @products.each do |product| %>
+			<div class="row">
+				<article class="product col-xs-6">
+					<%= link_to product, class: "product" do %>
+						<span class="col-xs-3">
+							<%= image_for_thumb(product, 75) %>
+						</span>
+						<span class="col-xs-3">
+							<%= product.name %>
+						</span>
+						<span class="col-xs-3">
+							<%= number_to_currency(product.price, :locale => :sv) %>
+						</span>
+						<span class="col-xs-3">
+							<%= format_stock(product) %> 
+						</span>
+					<% end %>
+				</article>
+			</div>
+		<% end %>
+	</section>
+<% else %>
+	<section class="products row">
+		<% @products.each do |product| %>
+			<article class="product col-xs-4">
+				<%= link_to product, class: "product" do %>
+					<header>
+						<%= image_for_thumb(product, 100) %>
+						<h2><%= product.name %></h2>
+					</header>
+					<p>
+						<%= truncate(product.description, length: 45, separator: ' ' ) %>
+					</p>
+					<p>
+						<%= number_to_currency(product.price, :locale => :sv) %>
+					</p>
+					<%= format_stock(product) %> 
+				<% end %>
+			</article>
+		<% end %>
+	</section>
+<% end %>
 <div class="row">
 	<div class="col-xs-12 paginate">
 		<%= will_paginate @products %>
