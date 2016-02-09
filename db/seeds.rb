@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create({ name: "Admin", email: "admin@admin.se", password: 'admin', superuser: 1 })
 
 Product.create({name: "Vinterjacka", description: "Blå jacka som är varm och skön även de kallaste dagarna på vinter.", price: 1750, stock: 10, image: "jacka.jpg"})
 product = Product.create({name: "Vinterkänga", description: "Vinterkänga som ger en stabil grund att stå på.", price: 3550, stock: 50, image: "kanga.jpg"})
