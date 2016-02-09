@@ -46,11 +46,11 @@ class OrdersController < ApplicationController
           empty_cart
           OrderMailer.send_order_email(@order).deliver
           if current_user || true ##Hur skall jag gå till en GET som inte har ett invärde?
-            format.html { redirect_to @order, notice: 'Order skapad.' }
+            format.html { redirect_to @order, notice: 'Beställning skickad.' }
           else
             # Måste komma vidare utan att gå till ordern. Nu kan man skriva vilket ordernummer som helst.
             # Får ingen yield eller resten när jag gör så här.
-            format.html { render @order, notice: 'Order skapad.' }  
+            format.html { render @order, notice: 'Beställning skickad.' }  
           end
         else
           format.html { render :new }

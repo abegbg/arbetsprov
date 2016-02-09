@@ -1,4 +1,4 @@
-<h1>Order <%= @order.id%></h1>
+<h1>Beställning med ordernr: <%= @order.id%></h1>
 <div class="order_show">
   <div class="row">
     <div class="col-xs-6">
@@ -78,7 +78,7 @@
 </div>
 <div class="row">
   <div class="col-xs-8">
-    <h2>Orderrader på denna order</h2>
+    <h2>Beställda produkter</h2>
     <%= render 'orderrows/rows_in_order' %>
   </div>
 </div>
