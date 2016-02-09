@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
 	def index
 		if current_user
-			@products = Product.paginate(:page => params[:page], :per_page => 10)
+			@products = Product.paginate(:page => params[:page], :per_page => 8)
 		else
 			@products = Product.paginate(:page => params[:page], :per_page => 6)
 			get_cart_from_cookie
