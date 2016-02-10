@@ -15,12 +15,16 @@ class CartrowsController < ApplicationController
 		@cartrow = @cart.cartrows.new(cartrow_params)
 		@cartrow.product_id = @product.id
 
-		#Check if product already exists in cart.
-		@cart.cartrows.each do |cartrow|
-			if (cartrow.product_id == @cartrow.product_id && cartrow.id != @cartrow.id)
-				cartrow.quantity = cartrow.quantity + @cartrow.quantity
-				@cartrow = cartrow
-				break #Not sure if it is good practice to use break.
+		if is_number?(params[:cartrow][:quantity])
+			#Check if product already exists in cart.
+			@cart.cartrows.each do |cartrow|
+				if (cartrow.product_id == @cartrow.product_id && cartrow.id != @cartrow.id )
+					cartrow.quantity = cartrow.quantity.to_i + @cartrow.quantity.to_i
+					@cartrow = cartrow
+					puts("----------")
+					puts(@cartrow.quantity)
+					break #Not sure if it is good practice to use break.
+				end
 			end
 		end
 
@@ -39,7 +43,7 @@ class CartrowsController < ApplicationController
 
 private
 
-  def cartrow_params
+	def cartrow_params
     params.require(:cartrow).permit(:quantity)
   end
 

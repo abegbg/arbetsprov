@@ -6,7 +6,7 @@
 				<%= image_for_thumb(cartrow.product, 50) %> 
 			</div>
 			<div class="col-xs-2">
-				<p><%= cartrow.product.name %></p>
+				<p><%= link_to cartrow.product.name, cartrow.product %></p>
 			</div>
 			<div class="col-xs-3 cart_align-right">
 				<p><%= cartrow.quantity %>st x <%= number_to_currency(cartrow.product.price, :locale => :sv) %></p>

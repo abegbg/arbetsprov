@@ -12,7 +12,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.includes(orderrows: [:product]).where(id: params[:id]).first
+    if current_user || cookies[:orderid] == params[:id]
+      @order = Order.includes(orderrows: [:product]).where(id: params[:id]).first
+    else
+      redirect_to products_path
+    end
   end
 
   def new
@@ -37,6 +41,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if valid_order?(@order)
         if @order.save
+          cookies[:orderid] = @order.id
           @show_order = @order
           #Lower quantity on product here? 
           #lower_product_quantity(@order) #Should be done in the product controller.
@@ -45,7 +50,7 @@ class OrdersController < ApplicationController
           end
           empty_cart
           OrderMailer.send_order_email(@order).deliver
-          if current_user || true ##Hur skall jag gå till en GET som inte har ett invärde?
+          if current_user || cookies[:orderid]  ##Hur skall jag gå till en GET som inte har ett invärde?
             format.html { redirect_to @order, notice: 'Beställning skickad.' }
           else
             # Måste komma vidare utan att gå till ordern. Nu kan man skriva vilket ordernummer som helst.

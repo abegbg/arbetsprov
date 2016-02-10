@@ -1,4 +1,4 @@
-class OrderrowsController < ApplicationController
+is_numclass OrderrowsController < ApplicationController
 
 	# def index
 	# 	fail
@@ -50,10 +50,6 @@ class OrderrowsController < ApplicationController
 
 
 private
-
-	def is_number? string
-		true if Float(string) rescue false
-	end
 
 	def orderrow_params
 		params.require(:orderrow).
