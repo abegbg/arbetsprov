@@ -1,4 +1,3 @@
-CU:<%= current_user %>
 <div class="orderrows_container">
 	<% @order.orderrows.each do |orderrow| %>
 		<div class="cart row">
@@ -22,7 +21,11 @@ CU:<%= current_user %>
 			</div>
 			<div class="col-xs-3">
 				<% if !orderrow.product.enough_stock?(orderrow.quantity) %>
-					<p>Vi har endast <%= format_stock(orderrow.product) %></p>
+					<% if orderrow.product.no_stock? %>
+						<%= format_stock(orderrow.product) %>
+					<% else %>
+						<p>Vi har endast <%= format_stock(orderrow.product) %></p>
+					<% end %>
 				<% end %>
 			</div>
 		</div>

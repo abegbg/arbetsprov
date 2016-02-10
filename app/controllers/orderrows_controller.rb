@@ -1,4 +1,4 @@
-is_numclass OrderrowsController < ApplicationController
+class OrderrowsController < ApplicationController
 
 	# def index
 	# 	fail
@@ -42,9 +42,9 @@ is_numclass OrderrowsController < ApplicationController
 	end
 
 
-
 	#Fick den inte att gå till den här istället för update
 	def update_quantity
+
 	end
 
 
